@@ -1,0 +1,2 @@
+# store text with LF in git, whatever the OS: shell scripts and Dockerfiles break on CRLF inside Linux containers
+* text=auto eol=lf

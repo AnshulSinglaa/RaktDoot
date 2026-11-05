@@ -1,0 +1,74 @@
+# Rakt Doot, the whole stack:   docker compose up --build
+# Secrets come from ./.env (copy .env.example). Every port binds to 127.0.0.1 only: nothing is exposed to your LAN.
+name: raktdoot
+
+x-backend-env: &backend-env
+  # the app connects as the least-privilege role (ADR 014); migrations use the owner
+  LIFELINK_DATABASE_URL: postgresql://lifelink_app:${APP_DB_PASSWORD:?set APP_DB_PASSWORD in .env}@db:5432/lifelink
+  LIFELINK_MIGRATIONS_DATABASE_URL: postgresql://lifelink:${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}@db:5432/lifelink
+  LIFELINK_JWT_SECRET: ${JWT_SECRET:?set JWT_SECRET in .env}
+  LIFELINK_COOKIE_SECURE: "false"           # plain http on localhost; true behind HTTPS
+  LIFELINK_CORS_ORIGINS: '["http://localhost:${WEB_PORT:-3000}"]'
+
+services:
+  db:
+    image: postgis/postgis:16-3.4           # Postgres 16 + PostGIS for the radius search
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: lifelink
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: lifelink
+    ports: ["127.0.0.1:${DB_PORT:-5434}:5432"]
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init:/docker-entrypoint-initdb.d:ro   # first start only: creates lifelink_test
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lifelink -d lifelink"]
+      interval: 3s
+      retries: 20
+
+  migrate:                                  # a one-shot job: schema to head, then exit
+    build: ./Backend
+    command: ["python", "manage.py", "migrate"]
+    environment:
+      <<: *backend-env
+      LIFELINK_APP_DB_PASSWORD: ${APP_DB_PASSWORD}
+    depends_on:
+      db: { condition: service_healthy }
+    healthcheck: { disable: true }
+
+  api:
+    build: ./Backend
+    restart: unless-stopped                 # a crash (or a Postgres restart at boot) must not need a human
+    environment:
+      <<: *backend-env
+      # uvicorn worker processes (stateless API, so they scale out). Measured in docs/adr/019-load-test.md.
+      # Budget: workers x (pool_size + max_overflow = 10) + listeners must stay under Postgres max_connections (100).
+      WEB_CONCURRENCY: ${API_WORKERS:-4}
+    ports: ["127.0.0.1:${API_PORT:-8000}:8000"]
+    depends_on:
+      migrate: { condition: service_completed_successfully }   # never serve traffic on an old schema
+
+  worker:                                   # drains the outbox (donor notifications); scale with --scale worker=3
+    build: ./Backend
+    command: ["python", "worker.py"]
+    restart: unless-stopped                 # belt and braces: the loop already survives DB errors (worker.run_loop)
+    environment: *backend-env
+    healthcheck: { disable: true }          # no HTTP port; it logs "worker started"
+    stop_grace_period: 15s                  # SIGTERM -> finish the current batch -> exit
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:${API_PORT:-8000}
+    ports: ["127.0.0.1:${WEB_PORT:-3000}:3000"]
+    restart: unless-stopped
+    depends_on:
+      api: { condition: service_healthy }   # the API image HEALTHCHECK hits /health/ready (DB reachable)
+    # healthy = Next serves "/" (the image HEALTHCHECK, frontend/Dockerfile); "running" alone means nothing
+
+volumes:
+  pgdata:

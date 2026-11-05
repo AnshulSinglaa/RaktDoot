@@ -1,0 +1,10 @@
+# Lint config (CLAUDE.md tooling baseline). Run: python -m ruff check .
+line-length = 130
+exclude = ["migrations"]
+
+[lint]
+select = ["E", "F", "B", "I"]    # pycodestyle, pyflakes (real bugs), bugbear (likely bugs), import order
+
+[lint.flake8-bugbear]
+# FastAPI's dependency idiom: `principal = require("admin")` as a default is how Depends is declared, not a bug
+extend-immutable-calls = ["deps.require", "fastapi.Depends", "fastapi.Query", "fastapi.Header"]

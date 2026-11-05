@@ -1,0 +1,10 @@
+[run]
+source = .
+omit =
+    test_*.py
+    conftest.py
+    factories.py
+    db_check.py
+    loadtest.py
+    migrations/*
+    .venv/*

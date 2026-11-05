@@ -1,0 +1,17 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+.pytest_cache/
+.coverage
+htmlcov/
+coverage.xml
+# local artefacts and secrets that must never ship in the image
+demo-credentials.txt
+.ruff_cache/
+data/raw/*.csv
+load/
+# tests run in CI, not in the container (nothing at runtime imports them)
+test_*.py
+conftest.py
+factories.py
