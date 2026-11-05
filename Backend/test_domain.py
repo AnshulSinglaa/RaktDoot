@@ -48,3 +48,31 @@ def test_eligibility_boundary_is_inclusive_at_90_days():
 def test_interval_is_configurable():
     last = NOW - timedelta(days=100)
     assert is_eligible(last, NOW, min_interval_days=120) is False
+
+# Written by hand from the standard plasma chart (ABO only, Rh ignored).
+PLASMA = {"O": {"O", "A", "B", "AB"}, "A": {"A", "AB"}, "B": {"B", "AB"}, "AB": {"AB"}}
+
+
+@pytest.mark.parametrize("recipient", list(EXPECTED))
+def test_plasma_compatibility_matches_chart(recipient):
+    from domain import compatible_groups
+    got = {g.value.rstrip("+-") for g in compatible_groups(BloodGroup(recipient), "plasma")}
+    assert got == PLASMA[recipient.rstrip("+-")]
+    assert len(compatible_groups(BloodGroup(recipient), "plasma")) == 2 * len(PLASMA[recipient.rstrip("+-")])  # both Rh
+
+
+def test_platelets_have_no_rule_yet():
+    from domain import compatible_groups
+    with pytest.raises(ValueError):
+        compatible_groups(BloodGroup("O+"), "platelets")
+
+
+@pytest.mark.parametrize("sex, days", [("male", 90), ("female", 120), ("other", 120), (None, 120)])
+def test_donation_interval_depends_on_sex_and_unknown_is_the_safe_side(sex, days):
+    from domain import donation_interval_days
+    assert donation_interval_days(sex, 90, 120) == days
+
+
+def test_eligibility_cutoffs_are_male_then_everyone_else():
+    from domain import eligibility_cutoffs
+    assert eligibility_cutoffs(NOW, 90, 120) == (NOW - timedelta(days=90), NOW - timedelta(days=120))

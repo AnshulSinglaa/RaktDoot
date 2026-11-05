@@ -3,7 +3,7 @@ from pydantic import ValidationError
 
 from schemas import DonorCreate, DonorRead, DonorUpdate
 
-GOOD = {"name": "  Asha  ", "email": "ASHA@Example.com", "age": 30, "blood_group": "O+"}
+GOOD = {"name": "  Asha  ", "email": "ASHA@Example.com", "age": 30, "blood_group": "O+", "sex": "female", "consent": True}
 
 
 def test_create_normalises_name_and_email():
@@ -36,8 +36,10 @@ def test_update_empty_rejected():
         DonorUpdate()
 
 
-def test_update_can_clear_last_donated_at_with_explicit_null():
-    assert DonorUpdate(last_donated_at=None).model_dump(exclude_unset=True) == {"last_donated_at": None}
+def test_update_cannot_touch_last_donated_at():
+    # threat model #1: a donor resetting his own eligibility clock
+    with pytest.raises(ValidationError):
+        DonorUpdate(last_donated_at=None)
 
 
 def test_read_from_attributes():
@@ -49,3 +51,31 @@ def test_read_from_attributes():
         eligible_now = True
 
     assert DonorRead.model_validate(Row()).name == "Asha"
+
+@pytest.mark.parametrize("consent", [False, None, "yes"])
+def test_create_requires_explicit_consent(consent):
+    with pytest.raises(ValidationError):
+        DonorCreate(**{**GOOD, "consent": consent})
+    with pytest.raises(ValidationError):
+        DonorCreate(**{k: v for k, v in GOOD.items() if k != "consent"})
+
+
+@pytest.mark.parametrize("raw", ["98123 45678", "09812345678", "+91 98123-45678", "919812345678"])
+def test_indian_mobiles_are_normalised_to_e164(raw):
+    assert DonorCreate(**GOOD, phone=raw).phone == "+919812345678"
+    assert DonorUpdate(phone=raw).phone == "+919812345678"
+
+
+@pytest.mark.parametrize("raw", ["5812345678", "981234567", "98123456789", "98123abcde", "98123x45678"])
+def test_bad_phones_are_rejected(raw):
+    # starts with 5 (not a mobile), 9 digits, 11 digits without a leading 0, letters (even around 10 digits)
+    with pytest.raises(ValidationError):
+        DonorCreate(**GOOD, phone=raw)
+
+
+def test_sex_is_required_and_closed():
+    without = {k: v for k, v in GOOD.items() if k != "sex"}
+    with pytest.raises(ValidationError):
+        DonorCreate(**without)
+    with pytest.raises(ValidationError):
+        DonorCreate(**{**GOOD, "sex": "x"})

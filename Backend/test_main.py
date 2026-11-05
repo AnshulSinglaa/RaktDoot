@@ -5,10 +5,13 @@ from datetime import datetime, timezone
 from fastapi.testclient import TestClient
 
 from config import Settings
+from conftest import as_role
+from db import make_engine, make_sessionmaker
 from factories import make_donor
 from main import create_app, get_now, get_session
 
-GOOD = {"name": "Asha", "email": "asha@example.com", "age": 30, "blood_group": "O+"}   # fixed email: for duplicate tests
+# fixed email: for the duplicate tests
+GOOD = {"name": "Asha", "email": "asha@example.com", "age": 30, "blood_group": "O+", "sex": "female", "consent": True}
 NIL_ID = "00000000-0000-0000-0000-000000000000"
 
 
@@ -17,9 +20,9 @@ def test_live(client):
 
 
 def test_info_uses_settings_given_to_the_app(test_url, fresh_db):
-    app = create_app(Settings(database_url=test_url, environment="test-env"))
+    app = create_app(Settings(database_url=test_url, environment="test-env", jwt_secret="s" * 32))
     with TestClient(app) as c:
-        assert c.get("/info").json() == {"app": "LifeLink", "environment": "test-env"}
+        assert c.get("/info").json() == {"app": "Rakt Doot", "environment": "test-env"}
 
 
 # ---------- registering donors ----------
@@ -63,9 +66,11 @@ def test_get_200_and_404(client):
     assert client.get(f"/v1/donors/{NIL_ID}").status_code == 404
 
 
-def test_eligible_now_uses_pinned_clock(app):
-    app.dependency_overrides[get_now] = lambda: datetime(2026, 10, 7, tzinfo=timezone.utc)
+def test_eligible_now_uses_pinned_clock(app, test_url):
     with TestClient(app) as c:
+        # log in BEFORE pinning the clock: login also reads get_now, and a token issued "on 2026-10-07" is already expired
+        c.headers.update(as_role(c, test_url, "admin"))
+        app.dependency_overrides[get_now] = lambda: datetime(2026, 10, 7, tzinfo=timezone.utc)
         recent = c.post("/v1/donors", json=make_donor(last_donated_at="2026-09-20T00:00:00Z")).json()
         old = c.post("/v1/donors", json=make_donor(last_donated_at="2026-05-01T00:00:00Z")).json()
         assert recent["eligible_now"] is False
@@ -209,6 +214,16 @@ def test_unexpected_error_is_a_generic_problem_and_leaks_nothing(app):
     assert "secret" not in r.text
 
 
+def test_a_database_outage_is_a_503_problem_with_retry_after(app):
+    """QA nit N4: an unreachable database is not a bug. Break-it: point the app's sessions at a closed port."""
+    with TestClient(app, raise_server_exceptions=False) as c:
+        app.state.sessionmaker = make_sessionmaker(make_engine("postgresql+asyncpg://x:y@127.0.0.1:1/down", 1, 0))
+        r = c.get("/v1/public/nearest-banks", params={"recipient": "O+", "latitude": 23.2, "longitude": 77.4})
+    assert (r.status_code, r.headers["retry-after"]) == (503, "5")
+    assert r.json()["type"] == "urn:lifelink:problem:database-unavailable"
+    assert "127.0.0.1" not in r.text
+
+
 # ---------- idempotency keys ----------
 def test_retry_with_same_key_replays_the_first_answer(client):
     headers = {"Idempotency-Key": "signup-001"}
@@ -236,6 +251,12 @@ def test_without_a_key_a_repeat_is_still_a_409(client):
 
 def test_empty_key_is_rejected(client):
     assert client.post("/v1/donors", json=GOOD, headers={"Idempotency-Key": ""}).status_code == 422
+
+
+def test_an_overlong_key_is_a_422_not_a_500(client):
+    """B9: the stored key is '<user id>:<key>' with a 255-char CHECK; a 255-char key used to reach it and 500."""
+    assert client.post("/v1/donors", json=GOOD, headers={"Idempotency-Key": "k" * 201}).status_code == 422
+    assert client.post("/v1/donors", json=GOOD, headers={"Idempotency-Key": "k" * 200}).status_code == 201
 
 
 def test_simultaneous_retries_with_one_key_create_one_donor(client):
@@ -268,14 +289,22 @@ def test_ready_is_503_when_db_is_down(app):
     assert r.json()["type"] == "urn:lifelink:problem:database-unavailable"
 
 
-def test_data_survives_an_app_restart(settings, fresh_db):
+def test_data_survives_an_app_restart(settings, fresh_db, test_url):
     with TestClient(create_app(settings)) as first:
-        donor = first.post("/v1/donors", json=make_donor()).json()
+        headers = as_role(first, test_url, "admin")
+        donor = first.post("/v1/donors", json=make_donor(), headers=headers).json()
     with TestClient(create_app(settings)) as second:          # a brand-new app, a brand-new pool
-        assert second.get(f"/v1/donors/{donor['id']}").status_code == 200
+        assert second.get(f"/v1/donors/{donor['id']}", headers=headers).status_code == 200
 
 
 def test_simultaneous_duplicate_signups_have_exactly_one_winner(client):
     with ThreadPoolExecutor(max_workers=8) as pool:
         codes = list(pool.map(lambda _: client.post("/v1/donors", json=GOOD).status_code, range(8)))
     assert sorted(codes) == [201] + [409] * 7
+
+
+def test_cors_allows_only_the_configured_frontend(client):
+    ok = client.options("/v1/donors", headers={"Origin": "http://localhost:3000", "Access-Control-Request-Method": "GET"})
+    assert ok.headers["access-control-allow-origin"] == "http://localhost:3000"
+    evil = client.options("/v1/donors", headers={"Origin": "https://evil.example", "Access-Control-Request-Method": "GET"})
+    assert "access-control-allow-origin" not in evil.headers
