@@ -1,0 +1,2286 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-10-19T18:53:36Z",
+    "timestamp_areas_base": "2026-10-19T13:39:51Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 6201561030,
+  "lat": 22.7305038,
+  "lon": 75.8978194,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:country": "IN",
+    "addr:housenumber": "51 Shree nagar Extension",
+    "addr:street": "Near Royal Care Hospital,Khajrana Road,Indore",
+    "contact:phone": "9827333573",
+    "healthcare": "blood_bank",
+    "name": "Shubham Blood Bank",
+    "name:en": "Shubham Blood Bank",
+    "name:hi": "शुभम ब्लड बैंक",
+    "opening_hours": "Mo-Su 00:00-24:00",
+    "operator:type": "private",
+    "source": "2C_Indore Field Visit 2019"
+  }
+},
+{
+  "type": "node",
+  "id": 6207067496,
+  "lat": 22.7196604,
+  "lon": 75.9016657,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:country": "IN",
+    "addr:housenumber": "64",
+    "addr:street": "Mahavir Nagar",
+    "contact:phone": "07312590737",
+    "facility:blood_packs": "yes",
+    "facility:complete": "yes",
+    "facility:platelets": "yes",
+    "facility:transfusion": "yes",
+    "healthcare": "blood_bank",
+    "name": "Shri Satya Sai Blood Bank",
+    "name:en": "Shri Satya Sai Blood Bank",
+    "name:hi": "श्री सत्य साईं ब्लड बैंक",
+    "opening_hours": "Mo-Sa 09:00-20:00",
+    "operator:type": "private",
+    "personnel:count": "6",
+    "source": "2C_Indore Field Visit 2019"
+  }
+},
+{
+  "type": "node",
+  "id": 6881057800,
+  "lat": 22.7125595,
+  "lon": 75.8465838,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "East 9, Premkumari Hospital, Biyabani, Biyabani, Indore, Madhya Pradesh",
+    "addr:postcode": "452002",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07312343122; 07312760222",
+    "name": "Lions Club of Indore Blood Bank",
+    "source": "OpenGovernmentData",
+    "website": "https://e-clubhouse.org/sites/indore_east/index.php"
+  }
+},
+{
+  "type": "node",
+  "id": 6884802383,
+  "lat": 22.7467056,
+  "lon": 77.7340718,
+  "tags": {
+    "addr:city": "Hoshangabad",
+    "addr:district": "HOSHANGABAD",
+    "addr:full": "Housing Board Road, Hoshangabad",
+    "addr:postcode": "461001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7574257835",
+    "name": "Society of Saint Joseph Hospital Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6884803413,
+  "lat": 22.0554391,
+  "lon": 77.8649113,
+  "tags": {
+    "addr:city": "Padhar",
+    "addr:district": "BETUL",
+    "addr:full": "Gram Padhar, Betul",
+    "addr:postcode": "460005",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07141263227; 07141263228; 07141263590",
+    "name": "Padhar Hospital Blood Bank",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888381711,
+  "lat": 22.3119147,
+  "lon": 74.3552273,
+  "tags": {
+    "addr:city": "Alirajpur",
+    "addr:district": "ALIRAJPUR",
+    "addr:full": "District Hospital",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9424063134",
+    "contact:phone": "7394235504",
+    "name": "District Hospital Blood Bank - Alirajpur",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888381720,
+  "lat": 22.0343469,
+  "lon": 74.8997694,
+  "tags": {
+    "addr:city": "Barwani",
+    "addr:district": "BARWANI",
+    "addr:full": "District Hospital",
+    "addr:postcode": "451551",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9993348333",
+    "contact:phone": "7290222025",
+    "name": "District Hospital Blood Bank - Barwani",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888422348,
+  "lat": 24.0926239,
+  "lon": 82.6562686,
+  "tags": {
+    "addr:city": "Singrauli",
+    "addr:district": "SINGRAULI",
+    "addr:full": "NTPC Hospital, Vindhya Nagar",
+    "addr:postcode": "486885",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7805245144",
+    "name": "Red Cross Blood Bank, Singrauli",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888422594,
+  "lat": 22.7014511,
+  "lon": 75.8293627,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "Situated in 283- A, Gumasta Nagar",
+    "addr:postcode": "452009",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07312785172; 0731278517274",
+    "fax": "0731 2785175",
+    "name": "Arihant Hospital and Research Centre Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888430017,
+  "lat": 23.8323428,
+  "lon": 80.3921100,
+  "tags": {
+    "addr:city": "Katni",
+    "addr:district": "KATNI",
+    "addr:full": "Government District Hospital",
+    "addr:postcode": "483501",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425183356",
+    "contact:phone": "7622230367",
+    "name": "District Hospital Blood Bank, Katni",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888430056,
+  "lat": 22.7055099,
+  "lon": 75.9080119,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "Sai Aradhna, 64 Mahavir Nagar, Kanaria Road",
+    "addr:postcode": "452016",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7312590737",
+    "name": "Shri Satya Sai Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888430057,
+  "lat": 22.7332448,
+  "lon": 75.8905117,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "14, Anoop Nagar, A. B. Road, MIG Circle, Vijay Nagar, Indore, Madhya Pradesh",
+    "addr:postcode": "452010",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07312575611; 07312575612; 07312575613",
+    "name": "Life Line Hospital Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888430069,
+  "lat": 24.7172329,
+  "lon": 80.1873717,
+  "tags": {
+    "addr:city": "Panna",
+    "addr:district": "PANNA",
+    "addr:full": "District Hospital, Panna",
+    "addr:postcode": "488001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9424350011",
+    "contact:phone": "7732253658",
+    "name": "District Hospital Blood Bank, Panna",
+    "opening_hours": "24/7",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888435286,
+  "lat": 22.7119027,
+  "lon": 75.8399145,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "M. O. G. Lines, Dhar Road",
+    "addr:postcode": "452017",
+    "addr:state": "Madhya Pradesh",
+    "contact:phone": "07312439223; 07312439200",
+    "healthcare": "blood_bank",
+    "name": "Shri Indore Cloth Market Hospital Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888435287,
+  "lat": 26.4961372,
+  "lon": 77.9986659,
+  "tags": {
+    "addr:city": "Morena",
+    "addr:district": "MORENA",
+    "addr:full": "District Hospital, Morena",
+    "addr:postcode": "476001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826246293",
+    "contact:phone": "7532226318",
+    "email": "bloodbankmorena@gmail.com",
+    "name": "District Hospital Blood Bank, Morena",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888435320,
+  "lat": 22.3406138,
+  "lon": 77.0934034,
+  "tags": {
+    "addr:city": "Harda",
+    "addr:district": "HARDA",
+    "addr:full": "District Hospital",
+    "addr:postcode": "461331",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425981771",
+    "contact:phone": "7577223102",
+    "name": "District Hospital Blood Bank - Harda",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888435325,
+  "lat": 22.7575717,
+  "lon": 77.7188006,
+  "tags": {
+    "addr:city": "Narmadapuram",
+    "addr:district": "Narmadapuram",
+    "addr:full": "District Hospital",
+    "addr:postcode": "461001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425041911",
+    "contact:phone": "7574254446",
+    "email": "bloodbankhbad@gmail.com",
+    "name": "District Hospital Blood Bank, Hoshangabad",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888435335,
+  "lat": 21.9034464,
+  "lon": 77.8983504,
+  "tags": {
+    "addr:city": "Betul",
+    "addr:district": "BETUL",
+    "addr:full": "District Hospital",
+    "addr:postcode": "460001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425002915",
+    "contact:phone": "7141233250",
+    "name": "District Hospital Blood Bank - Betul",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888435340,
+  "lat": 22.1251671,
+  "lon": 78.1423965,
+  "tags": {
+    "addr:city": "Pathakheda",
+    "addr:district": "BETUL",
+    "addr:full": "WCL Area Hospital, Post, Pathakheda",
+    "addr:postcode": "460447",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425636992",
+    "contact:phone": "7146270210",
+    "name": "WCL Hospital Blood Bank Pathakheda",
+    "opening_hours": "24/7",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6888435345,
+  "lat": 22.1893297,
+  "lon": 78.7062562,
+  "tags": {
+    "addr:city": "Barkui",
+    "addr:district": "CHHINDWARA",
+    "addr:full": "WCL Badkuhi Hospital, Chandameta Post",
+    "addr:postcode": "480447",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425461226",
+    "contact:phone": "7162220249",
+    "name": "WCL Badkui Hospital Chhindwara Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6893232336,
+  "lat": 24.4137264,
+  "lon": 81.8809225,
+  "tags": {
+    "addr:district": "SIDHI",
+    "addr:full": "District Hospital Blood Bank, Sidhi",
+    "addr:postcode": "486661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9584919194",
+    "contact:phone": "07822252207; 07822252153",
+    "email": "civilsurgeonsidhi@gmail.com",
+    "name": "District Hospital Blood Bank, Sidhi",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6893232337,
+  "lat": 24.5317735,
+  "lon": 81.2999171,
+  "tags": {
+    "addr:district": "REWA",
+    "addr:full": "S. S. Medical College, Rewa",
+    "addr:postcode": "486001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "09827583242; 09755461008",
+    "contact:phone": "7662257441",
+    "fax": "07662 251167",
+    "name": "S. S. Medical College Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData",
+    "website": "http://www.ssmcrewa.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6893232338,
+  "lat": 24.5851799,
+  "lon": 80.8560123,
+  "tags": {
+    "addr:district": "SATNA",
+    "addr:full": "J. R. Birla Road, Post Birla Vikas",
+    "addr:postcode": "485005",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "08224003814; 08224003804",
+    "contact:phone": "07672257411; 07672257412; 07672404085",
+    "fax": "07672 400200",
+    "name": "MP Birla Hospital and Priyamvada Birla Cancer Research Institute Blood Bank",
+    "source": "OpenGovernmentData",
+    "website": "http://www.mpbirlahospitals.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6893232343,
+  "lat": 24.5682524,
+  "lon": 80.8321398,
+  "tags": {
+    "addr:district": "SATNA",
+    "addr:full": "District Hospital Blood Bank, Satna",
+    "addr:postcode": "485001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9893738846",
+    "contact:phone": "7672223226",
+    "name": "District Hospital Blood Bank, Satna",
+    "opening_hours": "24/7",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6894755539,
+  "lat": 23.8331598,
+  "lon": 79.4407064,
+  "tags": {
+    "addr:city": "Damoh",
+    "addr:district": "DAMOH",
+    "addr:full": "District Hospital",
+    "addr:postcode": "470661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "09425406173; 09893523216",
+    "contact:phone": "7812222183",
+    "name": "District Hospital Blood Bank - Damoh",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6895177178,
+  "lat": 22.7575432,
+  "lon": 75.8853102,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "Scheme No. 74 C, Sector D, Vijay Nagar",
+    "addr:postcode": "452010",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7312445566",
+    "name": "Apollo Hospital Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6895185814,
+  "lat": 23.3274075,
+  "lon": 75.0383377,
+  "tags": {
+    "addr:city": "Ratlam",
+    "addr:district": "RATLAM",
+    "addr:full": "District Hospital, Ratlam",
+    "addr:postcode": "457001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "07879154365; 09827232032",
+    "contact:phone": "7412270445",
+    "email": "bloodbankrtm@gmail.com",
+    "name": "District Hospital Blood Bank, Ratlam",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6895218072,
+  "lat": 23.1866367,
+  "lon": 81.5711434,
+  "tags": {
+    "addr:city": "Dhanpuri",
+    "addr:district": "SHAHDOL",
+    "addr:full": "Sohagpur Area, Dhanpuri Post",
+    "addr:postcode": "484114",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425890427",
+    "contact:phone": "7652250223",
+    "name": "Burhar Central Hospital of South Eastern Coal Fields Limited Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6895218092,
+  "lat": 23.2228681,
+  "lon": 77.4467602,
+  "tags": {
+    "addr:city": "Bhopal",
+    "addr:district": "BHOPAL",
+    "addr:full": "BHEL, Bhopal",
+    "addr:postcode": "462020",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7552505304",
+    "name": "Kasturba Hospital BHEL Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6895218137,
+  "lat": 23.1765263,
+  "lon": 77.4785820,
+  "tags": {
+    "addr:city": "Bhopal",
+    "addr:district": "BHOPAL",
+    "addr:full": "NH-12, Behind Vrindavan Garden, Hoshangabad Road, Jatkhedi",
+    "addr:postcode": "462026",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7556710300",
+    "name": "RKDF Medical College Hospital and Research Centre Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6895218204,
+  "lat": 22.7730308,
+  "lon": 74.5913047,
+  "tags": {
+    "addr:city": "Jhabua",
+    "addr:district": "JHABUA",
+    "addr:full": "District Hospital.JHABUA",
+    "addr:postcode": "457661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826175322",
+    "contact:phone": "7392243312",
+    "name": "District Hospital's Blood Bank, Jhabua",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6895218258,
+  "lat": 23.1995100,
+  "lon": 77.4198885,
+  "tags": {
+    "addr:city": "Bhopal",
+    "addr:district": "BHOPAL",
+    "addr:full": "Near Shahpura Lake, Shahpura",
+    "addr:postcode": "462016",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "7898301792",
+    "contact:phone": "07557086000; 07554086099",
+    "name": "Bansal Hospital Redefining Healthcare Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData",
+    "website": "https://bansalhospital.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6895218296,
+  "lat": 23.1790351,
+  "lon": 77.4281028,
+  "tags": {
+    "addr:city": "Bhopal",
+    "addr:district": "BHOPAL",
+    "addr:full": "J.K. Town, Kolar Road",
+    "addr:postcode": "462042",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7554087000",
+    "fax": "0755 4087003",
+    "name": "JK Hospital and Medical Research Centre Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData",
+    "website": "https://www.lnctgroup.in/LNMCRC"
+  }
+},
+{
+  "type": "node",
+  "id": 6897674824,
+  "lat": 25.1640045,
+  "lon": 80.8666760,
+  "tags": {
+    "addr:city": "Chitrakoot",
+    "addr:district": "SATNA",
+    "addr:full": "Sadguru Jankikund Chikitsalaya, Chitrakoot",
+    "addr:postcode": "485001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9935207959",
+    "contact:phone": "07670265320-6445",
+    "email": "slabs@sadgurutrust.org",
+    "name": "Sadguru Blood Bank, Chitrakoot",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData",
+    "website": "https://www.sadgurutrust.org/"
+  }
+},
+{
+  "type": "node",
+  "id": 6897678174,
+  "lat": 26.2354424,
+  "lon": 78.2185551,
+  "tags": {
+    "addr:city": "Gwalior",
+    "addr:district": "GWALIOR",
+    "addr:full": "Surya Mandir Road, Gwalior",
+    "addr:postcode": "474006",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07512405655; 07512416620",
+    "name": "Birla Institute of Medical Research Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688005,
+  "lat": 21.8167219,
+  "lon": 80.1907675,
+  "tags": {
+    "addr:city": "Balaghat",
+    "addr:district": "BALAGHAT",
+    "addr:full": "Main Road, Balaghat",
+    "addr:postcode": "481001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7632240022",
+    "name": "Agrawal Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688010,
+  "lat": 21.8185988,
+  "lon": 80.1829648,
+  "tags": {
+    "addr:city": "Balaghat",
+    "addr:district": "BALAGHAT",
+    "addr:full": "District Hospital Balaghat",
+    "addr:postcode": "481001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7632240799",
+    "email": "raktakoshbgt@gmail.com",
+    "name": "District Hospital Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688015,
+  "lat": 22.0949101,
+  "lon": 79.5518142,
+  "tags": {
+    "addr:city": "Seoni",
+    "addr:district": "SEONI",
+    "addr:full": "Smt Indira Gandhi District Hospital Blood Bank",
+    "addr:postcode": "480661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9827267407",
+    "contact:phone": "7692220358",
+    "email": "bbseoni@gmail.com",
+    "name": "District Hospital Blood Bank, Seoni",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688020,
+  "lat": 22.0591332,
+  "lon": 78.9266181,
+  "tags": {
+    "addr:city": "Chhindwara",
+    "addr:district": "CHHINDWARA",
+    "addr:full": "District Hospital",
+    "addr:postcode": "480001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425832530",
+    "contact:phone": "07162243442; 07162243443",
+    "name": "District Hospital Blood Bank - Chhindwara",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688025,
+  "lat": 22.9492648,
+  "lon": 79.1856846,
+  "tags": {
+    "addr:city": "Narsinghpur",
+    "addr:district": "NARSINGHPUR",
+    "addr:full": "Shankar Lal Dubey District Hospital",
+    "addr:postcode": "487001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9407304896",
+    "contact:phone": "7792230480",
+    "name": "District Hospital Narsinghpur Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688030,
+  "lat": 23.1695813,
+  "lon": 79.9323016,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:district": "JABALPUR",
+    "addr:full": "12 Anjuman Shopping Complex, Malviya Chowk Jabalpur",
+    "addr:postcode": "482002",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9301338741",
+    "contact:phone": "7612401958",
+    "name": "Jabalpur Thalesemia Society Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688031,
+  "lat": 23.1501759,
+  "lon": 79.8813048,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:district": "JABALPUR",
+    "addr:full": "Netaji Subhash Chandra Bose (NSCB) Medical College, Ist Floor Hospital Premises, Nagpur Road",
+    "addr:postcode": "482003",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "8989821487",
+    "contact:phone": "07612370951; 0761-2673646(Extn.300)",
+    "email": "transfusionmedicinejbp@gmail.com",
+    "fax": "0761 2673973",
+    "name": "NSCB Medical College Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData",
+    "website": "https://nscbmc.ac.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688036,
+  "lat": 23.1427277,
+  "lon": 79.9538237,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:district": "JABALPUR",
+    "addr:full": "Military Hospital Jabalpur",
+    "addr:postcode": "482001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "761762227",
+    "name": "Military Hospital Blood Bank, Jabalpur",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688041,
+  "lat": 23.1642845,
+  "lon": 79.9296623,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:district": "JABALPUR",
+    "addr:full": "Sukheja Towers, 1st Floor, Behind Main Bus Stand, 610 Wright Town",
+    "addr:postcode": "482002",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7615004322",
+    "name": "Bansal Blood Bank and Transfusion Service",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688046,
+  "lat": 23.1681708,
+  "lon": 79.9248478,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:district": "JABALPUR",
+    "addr:full": "14, Roopram Towers, Golbazar",
+    "addr:postcode": "482002",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7612316980",
+    "name": "Khanna Pathology Lab and Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688051,
+  "lat": 23.1721737,
+  "lon": 79.9364911,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:district": "JABALPUR",
+    "addr:full": "Government Seth Govinddas Victoria Hospital",
+    "addr:postcode": "482002",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9424957288",
+    "contact:phone": "7612622202",
+    "name": "District Victoria Hospital Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688056,
+  "lat": 23.5255015,
+  "lon": 80.8343366,
+  "tags": {
+    "addr:city": "Umaria",
+    "addr:district": "UMARIA",
+    "addr:full": "District Hospital, Umaria",
+    "addr:postcode": "484661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9827079695",
+    "contact:phone": "7653222314",
+    "email": "bloodbankumr@gmail.com",
+    "name": "District Hospital Blood Bank, Umaria",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688061,
+  "lat": 23.3077902,
+  "lon": 81.3531057,
+  "tags": {
+    "addr:city": "Shahdol",
+    "addr:district": "SHAHDOL",
+    "addr:full": "Shri Kushabhau Thakre, District Hospital",
+    "addr:postcode": "484001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9424646797",
+    "contact:phone": "7652245256",
+    "email": "bloodbankshahdol@gmail.com",
+    "name": "District Hospital Blood Bank, Shahdol",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688066,
+  "lat": 22.9461776,
+  "lon": 81.0751985,
+  "tags": {
+    "addr:postcode": "481880",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425165535",
+    "contact:phone": "7644234962",
+    "name": "District Hospital Blood Bank - Dindori",
+    "name:ur": "ڈسٹرکٹ ہسپتال بلڈ بینک - ڈینڈوری",
+    "opening_hours": "24/7",
+    "operator:type": "government"
+  }
+},
+{
+  "type": "node",
+  "id": 6897688072,
+  "lat": 25.4248338,
+  "lon": 77.6512433,
+  "tags": {
+    "addr:city": "Shivpuri",
+    "addr:district": "SHIVPURI",
+    "addr:full": "District Hospital, Shivpuri",
+    "addr:postcode": "473551",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9406570709",
+    "contact:phone": "7492222362",
+    "email": "csurgeonshimp@nic.in",
+    "name": "District Hospital Blood Bank, Shivpuri",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898348964,
+  "lat": 23.8227682,
+  "lon": 78.7552196,
+  "tags": {
+    "addr:district": "SAGAR",
+    "addr:full": "District Hospital, (Tilli Hospital)",
+    "addr:postcode": "470001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9827245793",
+    "contact:phone": "7582236548",
+    "email": "bloodbankndhsagar@gmail.com",
+    "name": "District Hospital Blood Bank, Sagar",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898349056,
+  "lat": 25.6875453,
+  "lon": 78.4414923,
+  "tags": {
+    "addr:district": "DATIA",
+    "addr:full": "District Hospital",
+    "addr:postcode": "475661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826235557",
+    "contact:phone": "7522238624",
+    "name": "District Hospital Blood Bank - Datia",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898349061,
+  "lat": 26.1954001,
+  "lon": 78.1585447,
+  "tags": {
+    "addr:district": "GWALIOR",
+    "addr:full": "Dal Bazar Tiraha Raj Payga Road, Lashkar Gwalior",
+    "addr:postcode": "474009",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826501162",
+    "contact:phone": "7512330393",
+    "name": "Shri Radheswami Blood Bank",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898349066,
+  "lat": 26.1917575,
+  "lon": 78.1597397,
+  "tags": {
+    "addr:district": "GWALIOR",
+    "addr:full": "Indian Red Cross Society, Behind Kamla Raja Hospital, Kampoo",
+    "addr:postcode": "474001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "09329767276; 09893972654",
+    "contact:phone": "7514074294",
+    "email": "indianredcross.4@gmail.com",
+    "name": "Indian Red Cross Society (IRCS) Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "ngo",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898349171,
+  "lat": 26.1916973,
+  "lon": 78.1649137,
+  "tags": {
+    "addr:district": "GWALIOR",
+    "addr:full": "Blood Bank, Neurology Building , J. A. Hospital Campus, G. R. Medical College, Gwalior",
+    "addr:postcode": "474009",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425111202",
+    "contact:phone": "7512403225",
+    "fax": "0751 2403403",
+    "name": "Blood Bank (Component & Apheresis Unit) G.R.Medical College",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData",
+    "website": "http://www.grmcgwalior.org"
+  }
+},
+{
+  "type": "node",
+  "id": 6898349208,
+  "lat": 26.2261300,
+  "lon": 78.2224028,
+  "tags": {
+    "addr:district": "GWALIOR",
+    "addr:full": "District Hospital, Morar, (Maternity Hospital Campus) Morar",
+    "addr:postcode": "474006",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826351516",
+    "contact:phone": "7515030097",
+    "name": "District Hospital Blood Bank - Gwaliar",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898521347,
+  "lat": 26.1834790,
+  "lon": 78.1658350,
+  "tags": {
+    "addr:city": "Gwalior",
+    "addr:district": "GWALIOR",
+    "addr:full": "Mandre Ki Mata, Gwalior",
+    "addr:postcode": "474009",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07512336502; 07512336505",
+    "name": "Cancer Hospital and Research Centre Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533786,
+  "lat": 22.7546906,
+  "lon": 75.9035572,
+  "tags": {
+    "addr:district": "INDORE",
+    "addr:full": "Eastern Ring Road, Ring Road, IDA Scheme No.94/95, Tulsi Nagar, Vijay Nagar",
+    "addr:postcode": "452010",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7312558866",
+    "name": "Bombay Hospital Trust Blood Bank, Indore",
+    "source": "OpenGovernmentData",
+    "website": "https://www.bombayhospitalindore.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533787,
+  "lat": 22.7164533,
+  "lon": 75.8761330,
+  "tags": {
+    "addr:district": "INDORE",
+    "addr:full": "11, Sarju Prasad Marg",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826077557",
+    "contact:phone": "7312519212",
+    "name": "Gokuldas Hospital Blood Bank",
+    "source": "OpenGovernmentData",
+    "website": "https://gokuldashospital.com/"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533788,
+  "lat": 22.7144350,
+  "lon": 75.8829358,
+  "tags": {
+    "addr:district": "INDORE",
+    "addr:full": "MY Hospital & MGM Medical College, A.B.Road, Indore",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:helpline": "0731 2438138",
+    "contact:mobile": "9893273236",
+    "contact:phone": "7312438138",
+    "email": "modelbloodbankmyh@gmail.com",
+    "fax": "0731 2514628",
+    "name": "MY Hospital & MGM Medical College - State of ART Model Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData",
+    "website": "https://sites.google.com/site/modelbloodbankmyh/"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533789,
+  "lat": 22.7203481,
+  "lon": 75.8816953,
+  "tags": {
+    "addr:district": "INDORE",
+    "addr:full": "16/1, South Tukoganj Kanchan Bagh, Main Road, Near Crown Palace Hotel",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826379533",
+    "contact:phone": "07314219191; 07312525555",
+    "fax": "0731 4041948",
+    "name": "SNG Hospital Blood Bank",
+    "source": "OpenGovernmentData",
+    "website": "Http://www.snghospital.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533790,
+  "lat": 22.7167990,
+  "lon": 75.8844318,
+  "tags": {
+    "addr:district": "INDORE",
+    "addr:full": "2/1, A.B. Road, Near Geeta Bhawan, Chouraha",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07314238111; 07312499331; 07312499332; 07312499333",
+    "fax": "0731 2499330",
+    "name": "Vishesh Hospital Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533791,
+  "lat": 22.7251181,
+  "lon": 75.8895508,
+  "tags": {
+    "addr:district": "INDORE",
+    "addr:full": "111/2, Old Palasia",
+    "addr:postcode": "452018",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9977220606",
+    "contact:phone": "07316633333; 07314051160; 07312491160; 07313057935; 07314091515",
+    "name": "Greater Kailash Hospitals Private Limited Blood Bank",
+    "source": "OpenGovernmentData",
+    "website": "http://www.gkh.co.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533792,
+  "lat": 22.7969413,
+  "lon": 75.8452213,
+  "tags": {
+    "addr:district": "INDORE",
+    "addr:full": "Indore Ujjain State Highway, Near MR 10 Crossing",
+    "addr:postcode": "453555",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07314231000; 07314231100",
+    "fax": "0731 4231010",
+    "name": "Aruvindo Blood Banks SAIMS Hospital",
+    "source": "OpenGovernmentData",
+    "website": "https://saimsonline.com/medical_coll.php?pid=36"
+  }
+},
+{
+  "type": "node",
+  "id": 6898533793,
+  "lat": 22.9622115,
+  "lon": 76.0482270,
+  "tags": {
+    "addr:district": "DEWAS",
+    "addr:full": "M G Government - District Hospital",
+    "addr:postcode": "455001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826336991",
+    "contact:phone": "7272251718",
+    "name": "District Hospital Blood Bank - Dewas",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543597,
+  "lat": 22.9642527,
+  "lon": 76.0439810,
+  "tags": {
+    "addr:district": "DEWAS",
+    "addr:full": "39, HIG, Chamunda Complex, Civil Lines",
+    "addr:postcode": "455001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9827030999",
+    "contact:phone": "7272253110",
+    "email": "vishnuprabha1@yahoo.co.in",
+    "name": "Vishnuprabha Charitable Trust Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "ngo",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543602,
+  "lat": 23.2498806,
+  "lon": 76.1447462,
+  "tags": {
+    "addr:city": "Maxi",
+    "addr:district": "SHAJAPUR",
+    "addr:full": "Murlidhar Kripa Hospital of JK Mansingh Ka Trust, Maxi District, Shajapur",
+    "addr:postcode": "465106",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07363233426; 07363233428",
+    "name": "Murlidhar Kripa Hospital Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543611,
+  "lat": 23.4207601,
+  "lon": 76.2743600,
+  "tags": {
+    "addr:district": "SHAJAPUR",
+    "addr:full": "District Hospital, Shajapur",
+    "addr:postcode": "465001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425034695",
+    "contact:phone": "7364222127",
+    "name": "District Hospital Blood Bank, Shajapur",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543616,
+  "lat": 23.1980788,
+  "lon": 77.0813750,
+  "tags": {
+    "addr:district": "SEHORE",
+    "addr:full": "District Hospital, Sehore",
+    "addr:postcode": "466001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425650196",
+    "contact:phone": "7562226737",
+    "name": "District Hospital Blood Bank, Sehore",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543635,
+  "lat": 23.5203824,
+  "lon": 77.8089389,
+  "tags": {
+    "addr:district": "VIDISHA",
+    "addr:full": "District Hospital, Vidisha",
+    "addr:postcode": "466001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9926472551",
+    "contact:phone": "7592237825",
+    "name": "District Hospital Blood Bank, Vidisha",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543640,
+  "lat": 23.3331473,
+  "lon": 77.7801239,
+  "tags": {
+    "addr:district": "RAISEN",
+    "addr:full": "District Hospital, Raisen",
+    "addr:postcode": "464551",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425652351",
+    "contact:phone": "7482222062",
+    "name": "District Hospital Blood Bank, Raisen",
+    "opening_hours": "24/7",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543649,
+  "lat": 23.3010734,
+  "lon": 77.4245998,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "Ayodhya Bypass road, Peoples Campus, Bhanpur Bhopal",
+    "addr:postcode": "462038",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7554005227",
+    "fax": "0755 4005211",
+    "name": "People Hospital Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543650,
+  "lat": 23.2098639,
+  "lon": 77.4369655,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "B-82, E/6 Arera Colony, Bhopal",
+    "addr:postcode": "462016",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07553206332; 07553206327",
+    "name": "New Bhopal Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543651,
+  "lat": 23.2289679,
+  "lon": 77.4350651,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "Maiti Chari. Trust 131/6, M.P. Nagar, Z-II Kiram Complex",
+    "addr:postcode": "462011",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7554090142",
+    "name": "Arpan Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543652,
+  "lat": 23.2301418,
+  "lon": 77.4179774,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "J P Hospital, 1250, Hospital Campus, Tulsi Nagar",
+    "addr:postcode": "482016",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9827056443",
+    "contact:phone": "7552556812",
+    "name": "District Hospital Blood Bank - Bhopal",
+    "opening_hours": "24/7",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543653,
+  "lat": 23.2307432,
+  "lon": 77.4197772,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "Indian Red Cross Society, Shivaji Nagar, Near J P Hospital",
+    "addr:postcode": "462016",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9303132652",
+    "contact:phone": "7552526108",
+    "name": "Indian Red7091 Cross Society (IRCS) Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543654,
+  "lat": 23.2537385,
+  "lon": 77.4126848,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "10, Neelam Colony, Bhopal",
+    "addr:postcode": "462008",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826066913",
+    "contact:phone": "7552576466",
+    "name": "Tatpar Pathology and Diagnostic Centre Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543655,
+  "lat": 23.2581551,
+  "lon": 77.3953135,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "Opposite Hamidia Hospital, 4, Fategarh, Sultania Road",
+    "addr:postcode": "462001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9827267821",
+    "contact:phone": "07552538891; 07555242131",
+    "name": "MP Thelasmia Kid Care Society Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543660,
+  "lat": 23.2600729,
+  "lon": 77.3909327,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "Gandhi Medical College and Hamidia Hospital",
+    "addr:postcode": "462001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425010647",
+    "contact:phone": "7554050148",
+    "name": "Gandhi Medical College Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData",
+    "way": "364479903",
+    "website": "https://www.gmcbhopal.net/index.asp"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543661,
+  "lat": 23.2642115,
+  "lon": 77.3937947,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "Motia Talab, Bhopal",
+    "addr:postcode": "462001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9993914499",
+    "contact:phone": "7554250909",
+    "name": "Manas Blood Bank of Chinmayi Swasthya Seva Sadhbhav Shikshan Samiti",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543662,
+  "lat": 23.2730968,
+  "lon": 77.3807806,
+  "tags": {
+    "addr:district": "BHOPAL",
+    "addr:full": "Idgah Hills, Bhopal",
+    "addr:postcode": "462003",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425431974",
+    "contact:phone": "7554255682",
+    "fax": "0755 2738325",
+    "name": "Jawahar Lal Nehru Cancer Hospital and Research Centre Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData",
+    "website": "http://www.jnch.nic.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543663,
+  "lat": 23.2687466,
+  "lon": 77.3080954,
+  "tags": {
+    "addr:city": "Bairagarh",
+    "addr:district": "BHOPAL",
+    "addr:full": "Bhainsakhedi, Bairagarh",
+    "addr:postcode": "462030",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "776679132",
+    "contact:phone": "07556679000; 07556679101; 07556679102; 07556679103",
+    "fax": "0755 6679295",
+    "name": "Chirayu Medical College and Hospital Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData",
+    "website": "HTTP://www.cmchbhopal.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6898543664,
+  "lat": 23.2571769,
+  "lon": 77.4095756,
+  "tags": {
+    "addr:district": "Bhopal",
+    "addr:full": "Indira Gandhi Mahila Evam Bal Chikitsalaya Gas Rahat",
+    "addr:postcode": "462002",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425013686",
+    "contact:phone": "7552713100",
+    "name": "Indira Gandhi Hospital's Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6898546039,
+  "lat": 22.5549842,
+  "lon": 75.7612239,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "160 Dreamland Theatre Annex, Mhow",
+    "addr:postcode": "453441",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826064696",
+    "contact:phone": "7324271255",
+    "name": "Modern Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6902141087,
+  "lat": 24.1087723,
+  "lon": 82.6417444,
+  "tags": {
+    "addr:city": "Jayant",
+    "addr:district": "SINGRAULI",
+    "addr:full": "Nehru Jan shatabdi Chikitsalaya Blood Bank of Northern Coal Field Jyant Sinroli",
+    "addr:postcode": "486661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9406711454",
+    "contact:phone": "7805254982",
+    "name": "Nehru Jan shatabdi Chikitsalaya Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6902231190,
+  "lat": 24.4605784,
+  "lon": 74.8751970,
+  "tags": {
+    "addr:district": "NEEMUCH",
+    "addr:full": "Indian Red Cross Society, District Hospital Campus",
+    "addr:postcode": "458441",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9406612591",
+    "contact:phone": "07423223878; 07423225982",
+    "email": "redcrossbbnmh@gmail.com",
+    "name": "Indian Red Cross Society (IRCS) Blood Bank, Neemuch",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903001795,
+  "lat": 23.1928313,
+  "lon": 75.7765500,
+  "tags": {
+    "addr:city": "Ujjain",
+    "addr:district": "UJJAIN",
+    "addr:full": "Ujjain",
+    "addr:postcode": "456001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7344013621",
+    "name": "Ujjain Charitable Trust Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903001819,
+  "lat": 23.1682078,
+  "lon": 75.7955106,
+  "tags": {
+    "addr:city": "Ujjain",
+    "addr:district": "UJJAIN",
+    "addr:full": "Dewas Road",
+    "addr:postcode": "456010",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425380020",
+    "contact:phone": "7342526732",
+    "name": "Puspha Mission Hospital and Maternity Home Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903001857,
+  "lat": 22.7160358,
+  "lon": 75.8739853,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "1st Floor, Manas Bhavan, RNT Marg",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07312527081; 07314208761",
+    "name": "Sanghvi Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903001858,
+  "lat": 22.6919206,
+  "lon": 75.8661318,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "44 B, Bhawarkuan Chouraha, A.B. Road",
+    "addr:postcode": "452009",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9993172869",
+    "contact:phone": "07312363716; 07312363717; 07312363718",
+    "name": "Gurjar Hospital and Endoscopy Centre Private Limited Blood Bank",
+    "source": "OpenGovernmentData",
+    "website": "https://www.gurjarhospital.in/"
+  }
+},
+{
+  "type": "node",
+  "id": 6903001859,
+  "lat": 22.7119583,
+  "lon": 75.8381630,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "120, Dhar Road, Opposite to Kastur Cinema",
+    "addr:postcode": "452002",
+    "addr:state": "Madhya Pradesh",
+    "contact:phone": "07312380609; 07314022000; 07314056651",
+    "fax": "0731 2388394",
+    "healthcare": "blood_bank",
+    "name": "Verma Union Hospital Blood Bank",
+    "source": "OpenGovernmentData",
+    "website": "http://www.varmaunionhospital.com/PATHOLPGY_BLOOD%20BANK.aspx"
+  }
+},
+{
+  "type": "node",
+  "id": 6903245855,
+  "lat": 24.0677307,
+  "lon": 75.0705644,
+  "tags": {
+    "addr:city": "Mandsaur",
+    "addr:full": "Gandhi Chouraha",
+    "addr:postcode": "458001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9827070408",
+    "contact:phone": "7422242518",
+    "name": "Jain Pathology Laboratory and Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903245860,
+  "lat": 24.0697229,
+  "lon": 75.0727169,
+  "tags": {
+    "addr:city": "Mandsaur",
+    "addr:district": "MANDSAUR",
+    "addr:full": "District Hospital, Mandsaur",
+    "addr:postcode": "458001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9407101767",
+    "contact:phone": "7422241241",
+    "email": "bbdhmds@gmail.com",
+    "name": "District Hospital Blood Bank, Mandsaur",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903245861,
+  "lat": 23.2324586,
+  "lon": 75.8095586,
+  "tags": {
+    "addr:city": "Ujjain",
+    "addr:full": "Gardi Medical College Sursa",
+    "addr:postcode": "456006",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9630625611",
+    "contact:phone": "7368261305",
+    "email": "rdgmc_@sancharnet.in",
+    "fax": "07368 261235",
+    "name": "CR Gardi Hospital and RD Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData",
+    "website": "http://www.rdgmc.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6903245862,
+  "lat": 22.5962772,
+  "lon": 80.3703127,
+  "tags": {
+    "addr:city": "Mandla",
+    "addr:full": "District Hospital, Mandla",
+    "addr:postcode": "481661",
+    "addr:state": "Madhya Pradesh",
+    "contact:mobile": "9425163929",
+    "contact:phone": "7642253077",
+    "email": "bloodbank_mandla@rediffmail.com",
+    "fax": "07642 251501",
+    "healthcare": "blood_donation",
+    "name": "District Hospital Blood Bank, Mandla",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903245867,
+  "lat": 23.1675827,
+  "lon": 79.9484646,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:full": "Rani Durgawati Hospital, Jabalpur",
+    "addr:postcode": "482001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826319646",
+    "contact:phone": "761261052",
+    "name": "Rani Durgawati Hospital Blood Bank",
+    "opening_hours": "24/7",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903266733,
+  "lat": 22.7554520,
+  "lon": 77.7277699,
+  "tags": {
+    "addr:city": "Hoshangabad",
+    "addr:full": "In front of Church, Sadar Bazar",
+    "addr:postcode": "461001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7574252989",
+    "name": "Harit Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903422376,
+  "lat": 21.8244603,
+  "lon": 76.3429722,
+  "tags": {
+    "addr:city": "Khandwa",
+    "addr:district": "EAST NIMAR",
+    "addr:full": "District Hospital",
+    "addr:postcode": "450001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425070592",
+    "contact:phone": "7332230779",
+    "email": "artkhandwa@gmail.com",
+    "name": "District Hospital Blood Bank - Khandawa",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903439991,
+  "lat": 22.5944071,
+  "lon": 75.3080177,
+  "tags": {
+    "addr:city": "Dhar",
+    "addr:district": "DHAR",
+    "addr:full": "Bhoj District Hospital, Mandu Road",
+    "addr:postcode": "454001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9424004170",
+    "contact:phone": "7292235246",
+    "email": "dranilverma@gmail.com",
+    "name": "District Hospital Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903439996,
+  "lat": 22.5959876,
+  "lon": 75.2991141,
+  "tags": {
+    "addr:city": "Dhar",
+    "addr:district": "DHAR",
+    "addr:full": "Narsingh Chopati, Dhar",
+    "addr:postcode": "454001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "7771015777",
+    "contact:phone": "07292222451; 07292222453",
+    "email": "mmch.dhar@rediffmail.com",
+    "name": "Mittal Hospital Blood Bank",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903440003,
+  "lat": 22.9133315,
+  "lon": 74.5395783,
+  "tags": {
+    "addr:city": "Meghnagar",
+    "addr:district": "JHABUA",
+    "addr:full": "Meghnagar",
+    "addr:postcode": "457779",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425945142",
+    "contact:phone": "07392243312; 07390284455",
+    "name": "Jivan Jyoti Hospital Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903440036,
+  "lat": 21.8206344,
+  "lon": 76.3415372,
+  "tags": {
+    "addr:city": "Khandwa",
+    "addr:district": "EAST NIMAR",
+    "addr:full": "Near Priyadarshni Gas Agency, Bhawani Mata Road",
+    "addr:postcode": "450001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7332224705",
+    "name": "Deep Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6903440041,
+  "lat": 23.1851154,
+  "lon": 75.7828438,
+  "tags": {
+    "addr:city": "Ujjain",
+    "addr:district": "UJJAIN",
+    "addr:full": "District Hospital, Ujjain",
+    "addr:postcode": "456006",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9424892191",
+    "contact:phone": "7342551077",
+    "email": "bloodbankujjain2015@gmail.com",
+    "name": "District Hospital Blood Bank, Ujjain",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905009802,
+  "lat": 22.7523391,
+  "lon": 77.7275352,
+  "tags": {
+    "addr:city": "Hoshangabad",
+    "addr:district": "HOSHANGABAD",
+    "addr:full": "Anand Nagar, Main Road",
+    "addr:postcode": "461001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7574251201",
+    "name": "Shreya Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905029920,
+  "lat": 24.6466490,
+  "lon": 77.3079412,
+  "tags": {
+    "addr:city": "Guna",
+    "addr:district": "GUNA",
+    "addr:full": "District Hospital",
+    "addr:postcode": "473001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9630195174",
+    "contact:phone": "7542250312",
+    "name": "District Hospital Blood Bank - Guna",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905029925,
+  "lat": 24.0070943,
+  "lon": 76.7291567,
+  "tags": {
+    "addr:city": "Rajgarh",
+    "addr:district": "RAJGARH",
+    "addr:full": "District Hospital campus, Rajgarh",
+    "addr:postcode": "465661",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9179375278",
+    "contact:phone": "07372201021; 07372201023",
+    "email": "csurgeonrajmp@mp.nic.in",
+    "name": "District Hospital Blood Bank, Rajgarh",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905030012,
+  "lat": 21.3083244,
+  "lon": 76.2092587,
+  "tags": {
+    "addr:city": "Burhanpur",
+    "addr:district": "BURHANPUR",
+    "addr:full": "District Hospital",
+    "addr:postcode": "450331",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9754876365",
+    "contact:phone": "7325251166",
+    "email": "humaddawood@gmail.com",
+    "name": "District Hospital",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905030185,
+  "lat": 22.7138301,
+  "lon": 75.8839725,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "A.B. Road (opp M.G.M. Medical College)",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07312493911; 07312493912; 07312493913",
+    "name": "Suyash Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905518341,
+  "lat": 22.6877682,
+  "lon": 75.8540538,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "Indore",
+    "addr:full": "14, Manik Bagh Road",
+    "addr:postcode": "452014",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07312362491; 07312362499; 07314206750; 07314206759",
+    "name": "Choitram Hospital and Research Centre Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905518374,
+  "lat": 22.7543859,
+  "lon": 75.8822203,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "6/E A, Scheme No 54, Opposite Fortune, Landmark Hotel, Vijay Nagar",
+    "addr:postcode": "452010",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "07312556263; 07312553308",
+    "name": "Allied Pathology Laboratory and Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6905530296,
+  "lat": 23.1658233,
+  "lon": 79.9260682,
+  "tags": {
+    "addr:city": "Jabalpur",
+    "addr:district": "JABALPUR",
+    "addr:full": "21 Hikarini Market, Jabalpur",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "name": "Jabalpur Blood Bank & Pathology Lab",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6906106074,
+  "lat": 25.6760912,
+  "lon": 76.7120469,
+  "tags": {
+    "addr:district": "SHEOPUR",
+    "addr:full": "District Hospital, Sheopur",
+    "addr:postcode": "476337",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:helpline": "8823857039",
+    "contact:mobile": "88,230,786,050,882,300,000,000,000,000,000",
+    "contact:phone": "7746977417",
+    "email": "samvidakarmchari.she@gmail.com",
+    "fax": "7530220153",
+    "name": "District hospital's Blood Bank, sheopur",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6906111437,
+  "lat": 24.9071700,
+  "lon": 79.5843641,
+  "tags": {
+    "addr:city": "Chhatarpur",
+    "addr:full": "District Hospital",
+    "addr:postcode": "471001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9826862507",
+    "contact:phone": "7682248312",
+    "name": "District Hospital Blood Bank - Chhatarpur",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6906111448,
+  "lat": 26.4967543,
+  "lon": 77.9974593,
+  "tags": {
+    "addr:city": "Morena",
+    "addr:full": "Balkrishna Bhawan, Hospital Road",
+    "addr:postcode": "476001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425126999",
+    "contact:phone": "7532250789",
+    "name": "Jindal Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6906511987,
+  "lat": 22.7265010,
+  "lon": 75.8819233,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "19/1-C, New Palasia",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7312434445",
+    "name": "Qurewell Blood Bank of Care Well Hospital Private Limited",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6906512016,
+  "lat": 22.7186670,
+  "lon": 75.8764958,
+  "tags": {
+    "addr:city": "Indore",
+    "addr:district": "INDORE",
+    "addr:full": "37/1, South Tukoganj",
+    "addr:postcode": "452001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7312522970",
+    "name": "Noble Pathology Labs Blood Bank",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6906524619,
+  "lat": 21.8318939,
+  "lon": 75.6286115,
+  "tags": {
+    "addr:city": "Khargone",
+    "addr:full": "District Hospital, Sanawad Road",
+    "addr:postcode": "451001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:mobile": "9425496084",
+    "contact:phone": "7282250702",
+    "name": "District Hospital Blood Bank, Khargone",
+    "opening_hours": "24/7",
+    "operator:type": "government",
+    "source": "OpenGovernmentData",
+    "website": "http://www.bloodbankkhargone.com"
+  }
+},
+{
+  "type": "node",
+  "id": 6907496166,
+  "lat": 23.2523856,
+  "lon": 77.4152711,
+  "tags": {
+    "addr:city": "Bhopal",
+    "addr:district": "BHOPAL",
+    "addr:full": "Bajaj Complex Opposite Sindhi Gurudwara, Jehangirabad",
+    "addr:postcode": "462046",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:helpline": "9993914499",
+    "contact:mobile": "9425438695",
+    "contact:phone": "7553295144",
+    "email": "lbs_hospital@rediffmail.com",
+    "name": "City Blood Bank of Bhojpal Charitable Trust",
+    "opening_hours": "24/7",
+    "operator:type": "private",
+    "source": "OpenGovernmentData"
+  }
+},
+{
+  "type": "node",
+  "id": 6907496172,
+  "lat": 26.1934735,
+  "lon": 78.1549814,
+  "tags": {
+    "addr:city": "Gwalior",
+    "addr:district": "GWALIOR",
+    "addr:full": "Naya Bazar SS Kachoriwale-ke-samne Lashkar, Gwalior",
+    "addr:postcode": "474001",
+    "addr:state": "Madhya Pradesh",
+    "amenity": "blood_bank",
+    "contact:phone": "7512321034",
+    "name": "Radhaswami Blood Bank Services",
+    "source": "OpenGovernmentData"
+  }
+}
+
+  ]
+}
