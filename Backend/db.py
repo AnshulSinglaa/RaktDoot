@@ -1,4 +1,9 @@
 from sqlalchemy.ext.asyncio import AsyncEngine, async_sessionmaker, create_async_engine
+from sqlalchemy.orm import DeclarativeBase
+
+
+class Base(DeclarativeBase):
+    """The one declarative base every module's models share (it must not live inside any single module)."""
 
 
 def to_async_url(url: str) -> str:

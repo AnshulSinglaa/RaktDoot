@@ -2,11 +2,9 @@ import uuid
 from datetime import datetime
 
 from sqlalchemy import Boolean, DateTime, SmallInteger, Text, func, text
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column
 
-
-class Base(DeclarativeBase):
-    pass
+from db import Base
 
 
 class Donor(Base):
@@ -20,5 +18,14 @@ class Donor(Base):
     is_available: Mapped[bool] = mapped_column(Boolean, default=True, server_default=text("true"))
     last_donated_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     city: Mapped[str | None] = mapped_column(Text)          # added in migration 0002, nullable (expand step)
+    user_id: Mapped[uuid.UUID | None]                       # 0007: the owning account; NULL = walk-in donor (camp)
+    consent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))    # 0007: when consent was given
+    # 0009: APPROXIMATE location (rounded to ~1 km by the schema). Postgres derives the indexed `location` column.
+    latitude: Mapped[float | None]
+    longitude: Mapped[float | None]
+    sex: Mapped[str | None] = mapped_column(Text)                   # 0011: drives the donation interval
+    phone: Mapped[str | None] = mapped_column(Text)                 # 0011: E.164, unique
+    # 0011: set by staff who saw the donor in person
+    phone_verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
