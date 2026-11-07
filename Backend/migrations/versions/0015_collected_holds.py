@@ -5,7 +5,7 @@ Revises: 0014
 Create Date: 2026-10-20
 
 A collected hold is live (released_at IS NULL) and confirmed (collecting proves the units existed), and its units are
-ISSUED. Nothing may release it: release_all, release_overdue, reject and expire all skip it (field review F1).
+ISSUED. Nothing may release it: release_all, release_overdue, reject and expire all skip it.
 Backfill: the live holds of FULFILLED requests are exactly the units handed over before 0015, so they are collected at
 the moment the request closed. Released rows are never touched (the risk the brief names).
 

@@ -1,9 +1,9 @@
 # ADR 008: Test strategy (real Postgres, markers, factories, coverage)
 
-Status: accepted (2026-10-10). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-10).
 
 ## Context
-By lesson 1.6 the suite had 56 tests, and three problems:
+At 56 tests, the suite had three problems:
 1. If `LIFELINK_TEST_DATABASE_URL` was missing, every database test was SKIPPED and pytest still exited green
    (21 passed, 35 skipped, exit code 0). On a fresh clone or in CI that is a build that tested nothing.
 2. Test data was copy-pasted dict literals, so a new required field would break many tests for the wrong reason.
@@ -34,5 +34,5 @@ By lesson 1.6 the suite had 56 tests, and three problems:
 - Surviving mutant found in 1.7: changing `len(rows) > limit` to `>=` in the list route passed every test, because a last page that is exactly full was never tested. `test_exact_fit_last_page_has_no_cursor` kills it. Coverage showed that line as 100% covered the whole time.
 - The testcontainers path needs Docker and pulls `postgres:16`. On Windows the reaper container can fail; `TESTCONTAINERS_RYUK_DISABLED=true` is the escape hatch.
 - Tests are not yet parallel. `pytest-xdist` would need one database per worker.
-- A coverage floor (for example `--cov-fail-under=80`) is added to CI in Stage 4 once the number is honest. 80% is a floor, not a goal.
+- A coverage floor (for example `--cov-fail-under=80`) is added to CI once the number is honest. 80% is a floor, not a goal.
 - Revisit when the suite is slow enough to skip, or when automated mutation testing (`mutmut`) is cheap enough to run in CI.

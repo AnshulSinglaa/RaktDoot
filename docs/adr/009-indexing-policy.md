@@ -1,6 +1,6 @@
 # ADR 009: Indexing policy
 
-Status: accepted (2026-10-10). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-10).
 
 ## Context
 `GET /v1/donors?blood_group=...&is_available=...` is a keyset-paginated list. Migration 0003 built `(created_at, id)` for the
@@ -22,7 +22,7 @@ Option 3, migration 0005: `donors_blood_group_created_at_id_idx ON donors (blood
 - Not indexed on purpose: `is_available`. About 86% of donors are available (low selectivity), it flips often (indexing it breaks HOT updates and adds bloat), and the filter costs almost nothing once `blood_group` narrows the rows.
 - We tune the query the app really sends (read it with `LIFELINK_SQL_ECHO=true`): `SELECT *`, so these plans do heap fetches. Index-only scans and `INCLUDE` columns apply only to narrow queries.
 - Production builds use `CREATE INDEX CONCURRENTLY` (not inside a transaction; a failed build leaves an INVALID index to drop).
-- We do not write tests that assert a query plan: on a small test table the planner correctly picks a seq scan, so such a test would be flaky or wrong. Performance budgets arrive with load tests in Stage 5.
+- We do not write tests that assert a query plan: on a small test table the planner correctly picks a seq scan, so such a test would be flaky or wrong. Performance budgets arrive with load tests.
 
 ## Evidence (fill in from `before.txt` and `after.txt`, produced by `Backend/sql/perf_filtered_list.sql`; 300k rows)
 - Rare group AB- (about 0.2%), first page, before: ___ ms, buffers ___, plan: ___

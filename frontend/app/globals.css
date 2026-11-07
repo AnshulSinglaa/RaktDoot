@@ -1,4 +1,4 @@
-/* One stylesheet, no CSS framework (CLAUDE.md 5A). Tokens first; every rule below uses them.
+/* One stylesheet, no CSS framework. Tokens first; every rule below uses them.
    Two shells: .phone (public and donor pages, mobile-first, a 460px column) and .desk (staff pages, desktop width). */
 :root {
   /* colour */

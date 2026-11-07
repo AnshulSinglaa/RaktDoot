@@ -20,7 +20,7 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    # ponytail: a plain CREATE INDEX blocks writes while it builds. Fine on a small table.
+    # Trade-off: a plain CREATE INDEX blocks writes while it builds. Fine on a small table.
     # Big table: CREATE INDEX CONCURRENTLY inside op.get_context().autocommit_block().
     op.execute("CREATE INDEX donors_created_at_id_idx ON donors (created_at, id)")
 

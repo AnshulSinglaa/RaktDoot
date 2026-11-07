@@ -1,6 +1,6 @@
 # ADR 004: Alembic with hand-written migrations
 
-Status: accepted (2026-10-10). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-10).
 
 ## Context
 The schema was applied by hand from `sql/001_init.sql`. Nothing recorded which version a database was on, tests built their

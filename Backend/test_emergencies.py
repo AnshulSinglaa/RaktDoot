@@ -24,7 +24,7 @@ def world(client, test_url):
 
     w = {"hospital": org("hospital", AIIMS), "near": org("blood_bank", HAMIDIA), "far": org("blood_bank", INDORE)}
     for bank in ("near", "far"):
-        make_user(test_url, "blood_bank", w[bank])           # onboarded: someone can confirm a hold (D88)
+        make_user(test_url, "blood_bank", w[bank])           # onboarded: someone can confirm a hold
     w["staff"] = as_role(client, test_url, "hospital", w["hospital"])
     return w
 
@@ -184,7 +184,7 @@ def test_the_database_itself_refuses_a_second_live_allocation(client, world, tes
         asyncio.run(run_sql(test_url, duplicate))
 
 
-# ---------- only banks that can answer are held (D88) ----------
+# ---------- only banks that can answer are held ----------
 def test_a_bank_without_staff_is_never_held_even_when_nearest_but_families_still_see_it(client, world):
     """Nobody at a staff-less bank can confirm a hold, so its units must not be locked away from everyone else.
     It still appears in public search: a family can phone it."""

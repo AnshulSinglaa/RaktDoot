@@ -43,7 +43,7 @@ class BloodUnitRepository:
     ) -> list[BloodUnit]:
         """Soonest-to-expire first (FEFO: first expired, first out), keyset-paged on (expires_at, id).
 
-        ponytail: no new index. With all four filters the partial index from migration 0001 already serves this order;
+        Trade-off: no new index. With all four filters the partial index from migration 0001 already serves this order;
         unfiltered it is a scan of a small table. Index only for a measured query (ADR 009)."""
         stmt = select(BloodUnit).order_by(BloodUnit.expires_at, BloodUnit.id).limit(limit + 1)
         if blood_bank_id is not None:

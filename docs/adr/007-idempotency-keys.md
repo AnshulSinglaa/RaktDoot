@@ -1,6 +1,6 @@
 # ADR 007: Idempotency keys on POST /v1/donors
 
-Status: accepted (2026-10-10). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-10).
 
 ## Context
 A phone on a bad network sends `POST /v1/donors`, the server commits, the response is lost, the client retries. Today the unique
@@ -23,7 +23,7 @@ Option 2, optional on `POST /v1/donors`.
 - The fingerprint is sha256 of the validated, normalised body (`model_dump_json`), so cosmetic differences such as email case do not matter.
 
 ## Consequences
-- Security gap: the key namespace is global because there is no auth yet. A guessed key would replay someone else's saved response. Stage 2 makes the key unique per `(user_id, key)`. Clients must use random keys (UUIDv4).
+- Security gap: the key namespace is global because there is no auth yet. A guessed key would replay someone else's saved response. Authentication later makes the key unique per `(user_id, key)`. Clients must use random keys (UUIDv4).
 - Privacy: `response_body` stores a donor's name and blood group a second time. Rows need retention (about 24 hours); the purge job is planned for 3.5 and `idempotency_keys_created_at_idx` exists for it.
 - The key is optional, so protection depends on clients sending it. Requiring it on high-risk creates is a later decision.
 - If a purge ever deletes a row between `claim` and `get`, the replay path would fail; the 24-hour window makes that a non-issue in practice.

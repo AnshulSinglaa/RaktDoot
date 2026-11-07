@@ -6,7 +6,7 @@ import math
 import re
 from collections import Counter
 
-# ponytail: Madhya Pradesh's bounding box, not its polygon. A few rows just across the border pass (accepted); the
+# Trade-off: Madhya Pradesh's bounding box, not its polygon. A few rows just across the border pass (accepted); the
 # upgrade is a point-in-polygon check against the state boundary (the OSM relation tagged ISO3166-2=IN-MP).
 MP_BOX = {"lat": (21.0, 26.9), "lng": (74.0, 82.9)}
 DUPLICATE_WITHIN_M = 200

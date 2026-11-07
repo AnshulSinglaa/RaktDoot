@@ -1,4 +1,4 @@
-# Direct dependencies, pinned (Stage 2.7). Upgrade deliberately: bump, run pytest + pip-audit, commit.
+# Direct dependencies, pinned. Upgrade deliberately: bump, run pytest + pip-audit, commit.
 fastapi==0.142.2
 uvicorn[standard]==0.54.0
 pydantic[email]==2.13.5

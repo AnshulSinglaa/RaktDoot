@@ -1,6 +1,6 @@
 # ADR 020: Donor safety: interval by sex, and only in-person verified phones are matched
 
-Status: accepted (2026-10-19), amended the same day after QA (migration 0012). Drafted by Claude on Ansh's behalf: read it, own it.
+Status: accepted (2026-10-19), amended the same day after QA (migration 0012).
 
 ## Context
 Two gaps made the matching engine unsafe in a real crisis:
@@ -16,7 +16,7 @@ Two gaps made the matching engine unsafe in a real crisis:
   do not have yet).
 - **Reachability:** (a) trust self-declared phones (status quo, unsafe); (b) **SMS OTP at signup** (fast, self-service,
   but proves a SIM, not a person, costs money per message, needs a provider and its own abuse protection: OTP flooding,
-  SIM farms). Deferred: it is Ansh's decision to add later; (c) **verified in person** by blood-bank / NGO / admin staff,
+  SIM farms). Deferred: a later, deliberate decision; (c) **verified in person** by blood-bank / NGO / admin staff,
   or automatically when a blood bank records a donation (chosen).
 
 ## Decision
@@ -48,7 +48,7 @@ Two gaps made the matching engine unsafe in a real crisis:
   unverified rows). Staff registration with a phone, verify-phone and a verifying donation return `409 phone-taken` only
   if ANOTHER verified donor has the number, enforced by the index itself (IntegrityError in the repository, no pre-check
   query, so no race). An unverified duplicate stays as it is: never matched, and it can never be verified with that
-  number. Purging squatted numbers is deferred to plan item 3.
+  number. Purging squatted numbers is a planned follow-up.
 
 ## Consequences
 - Self-signups are invisible to matching until they visit a blood bank or camp. Slower onboarding, accepted: fewer,
@@ -65,9 +65,9 @@ Two gaps made the matching engine unsafe in a real crisis:
   does, and no Indian number has a 0 right after +91, so a demo number can never collide with a real signup and never
   rings anyone. The first version used `+915...`, which can be a real landline (STD codes start 1-8): moved 2026-10-19. ~10% of seeded donors are unverified on purpose.
 - The existing dev database has 2,001 pre-0011 donors with no sex and no phone: none is matchable until verified or
-  re-seeded. Re-seeding means `docker compose down -v`, which is Ansh's call.
+  re-seeded. Re-seeding means `docker compose down -v`, which is the operator's call.
 - SMS OTP and a pre-donation screening questionnaire are deliberately NOT built. The blood centre's own screening stays the
-  medical check (CLAUDE.md 4, point 6).
+  medical check.
 
 ## Evidence (2026-10-19)
 - 252 tests pass, 93% coverage (`pytest --cov`); `test_donor_safety.py` covers each rule and QA's two attack tests

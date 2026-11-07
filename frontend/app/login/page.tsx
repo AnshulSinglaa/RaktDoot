@@ -38,7 +38,7 @@ function Login() {
       // that page say "this is a donor account" when the two differ (lib/gate.tsx).
       router.push(homeFor((await authed<Me>("/v1/auth/me")).role) + (hint ? `?as=${as}` : ""));
     } catch (err) {
-      // Switch on the stable problem `type`, never on the human title (CLAUDE.md 5A).
+      // Switch on the stable problem `type`, never on the human title.
       const p = err instanceof ApiError ? err : null;
       setError(
         p?.is("unauthorized") ? "That email and password do not match. Check both and try again."

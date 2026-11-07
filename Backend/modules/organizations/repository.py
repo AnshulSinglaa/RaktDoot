@@ -26,7 +26,7 @@ class OrganizationRepository:
         self, kind: str | None = None, city: str | None = None, after: tuple[datetime, UUID] | None = None, limit: int = 20
     ) -> list[Organization]:
         # limit + 1: the caller keeps `limit` rows and uses the extra one to know "there is a next page"
-        # ponytail: no index on (created_at, id). Hundreds of rows, not millions; ADR 009 says no index without a measured query.
+        # Trade-off: no index on (created_at, id). Hundreds of rows, not millions; ADR 009 says no index without a measured query.
         stmt = select(Organization).order_by(Organization.created_at, Organization.id).limit(limit + 1)
         if kind is not None:
             stmt = stmt.where(Organization.kind == kind)

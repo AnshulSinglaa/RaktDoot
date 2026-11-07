@@ -4,7 +4,7 @@ Revision ID: 0007
 Revises: 0006
 Create Date: 2026-10-15
 
-Stage 2 identity. Design and trade-offs: docs/adr/013-authentication.md.
+Identity. Design and trade-offs: docs/adr/013-authentication.md.
 """
 from typing import Sequence, Union
 
@@ -50,7 +50,7 @@ def upgrade() -> None:
         )""")
     op.execute("CREATE INDEX refresh_tokens_family_idx ON refresh_tokens (family_id)")   # revoke-family is a lookup by family
     # Expand step: both nullable. Walk-in donors registered at a camp have no account (user_id NULL).
-    # Rows from before Stage 2 have no recorded consent (consent_at NULL); the API now requires it for new rows.
+    # Rows from before authentication have no recorded consent (consent_at NULL); the API now requires it for new rows.
     op.execute("ALTER TABLE donors ADD COLUMN user_id uuid UNIQUE REFERENCES users (id) ON DELETE RESTRICT")
     op.execute("ALTER TABLE donors ADD COLUMN consent_at timestamptz")
 

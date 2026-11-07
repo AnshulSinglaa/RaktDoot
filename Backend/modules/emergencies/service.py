@@ -57,7 +57,7 @@ async def allocate_remaining(
     # B4: a unit is held for at most confirm + pickup (a PENDING hold confirmed at the last minute gets the full pickup
     # window), so only units still in date at that latest pickup moment are promised. Expiring sooner = never held.
     usable_until = now + windows.confirm + windows.pickup
-    # B6: every filter runs BEFORE nearby()'s LIMIT, inside its `among`: staffed (no staff = nobody to confirm, D88),
+    # B6: every filter runs BEFORE nearby()'s LIMIT, inside its `among`: staffed (no staff = nobody to confirm),
     # holding compatible in-date stock, and not a bank that rejected this request. Filtering the 50 nearest afterwards
     # meant bank #51 with stock was never tried when 50 nearer banks were empty or had said no.
     excluded = await repo.excluded_banks(req.id)
@@ -82,7 +82,7 @@ async def allocate_remaining(
 
 async def recompute(repo: EmergencyRepository, req: EmergencyRequest, now: datetime) -> None:
     """After holds were lost: ALLOCATED -> OPEN when the live holds no longer cover the need.
-    ponytail: no automatic re-allocation (the hospital clicks "check blood banks again"); upgrade = call
+    Trade-off: no automatic re-allocation (the hospital clicks "check blood banks again"); upgrade = call
     allocate_remaining here, once the cap and the rejected-bank rule have been watched in real use."""
     req.status = status_after_allocation(req.units_needed, len(await repo.live_allocations(req.id)))
     req.updated_at = now

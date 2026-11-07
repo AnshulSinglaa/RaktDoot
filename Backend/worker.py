@@ -24,7 +24,7 @@ MAX_ATTEMPTS = 12
 
 def backoff(attempts: int) -> timedelta:
     """Wait after the Nth failed attempt: 2, 4, 8 ... 256 s, then capped at 5 minutes (from attempt 9).
-    ponytail: no jitter; add it when many workers retry the same outage."""
+    Trade-off: no jitter; add it when many workers retry the same outage."""
     return timedelta(seconds=min(2 ** attempts, 300))
 
 
@@ -76,7 +76,7 @@ async def run_loop(sessionmaker: async_sessionmaker, handlers: dict[str, Handler
                     log.info("released %s expired hold(s)", released)
             except Exception:                           # a failing sweep must not stop notifications
                 log.exception("hold expiry pass failed; retrying next interval")
-        # ponytail: polls every second. Upgrade: LISTEN/NOTIFY to wake instantly, poll only as the safety net.
+        # Trade-off: polls every second. Upgrade: LISTEN/NOTIFY to wake instantly, poll only as the safety net.
         try:
             taken = await process_batch(sessionmaker, handlers, notifier, datetime.now(timezone.utc))
             failures = 0

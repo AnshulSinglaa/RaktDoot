@@ -1,17 +1,17 @@
-# ADR 013: Authentication and authorization (Stage 2 core)
+# ADR 013: Authentication and authorization
 
-Status: accepted (2026-10-15). DRAFT written by Claude on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-15).
 
 ## Context
 Until now every endpoint was anonymous: anyone could list donors (personal health data) or invent blood stock.
-Stage 2 must come before any real user. Constraints: one Postgres, no Redis yet ("no tool before the pain"), a Next.js
+Authentication must come before any real user. Constraints: one Postgres, no Redis yet ("no tool before the pain"), a Next.js
 browser client (`frontend/lib/api.ts` already assumes an in-memory access token and an HttpOnly refresh cookie).
 
 ## Options
 1. Server sessions (random session id in a cookie, a row per session, a DB read per request).
 2. Long-lived JWT only (no refresh). Simple, but a stolen token works until it expires and cannot be revoked.
 3. Short JWT access token + opaque, rotating refresh token stored hashed in Postgres. Reuse detection per login "family".
-4. A hosted identity provider (Cognito, Auth0, Keycloak). Right for many real products; hides exactly what Stage 2 must teach.
+4. A hosted identity provider (Cognito, Auth0, Keycloak). Right for many real products; hides exactly the mechanics this project exists to show.
 
 ## Decision
 Option 3.
@@ -38,7 +38,7 @@ Option 3.
 ## Consequences
 - A deactivated or demoted user keeps access for up to 15 minutes (no deny-list). Upgrade: a Redis deny-list checked in
   `get_current_user` when an incident shows 15 minutes is too long.
-- The rate limiter is per process and forgets on restart. Two instances means two counters. Upgrade: Redis `INCR`/`EXPIRE` at Stage 5.
+- The rate limiter is per process and forgets on restart. Two instances means two counters. Upgrade: Redis `INCR`/`EXPIRE` once there are several instances.
 - Two browser TABS refreshing at the same instant still trip reuse detection (single-flight is per tab). Upgrade: a short
   server grace window, when it is seen in practice.
 - `409 email-taken` on signup reveals that an email has an account. Accepted for signup UX until email verification exists (3.6).

@@ -1,17 +1,17 @@
 # ADR 012: Inventory, minimal scope (register, get, list)
 
-Status: accepted (2026-10-11). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-11).
 
 ## Context
 Blood units are the core domain object. We asked, as we did with MongoDB, whether the whole inventory CRUD was really needed now.
-The honest answer was: partly. Registering and reading units is needed soon: Stage 2's object-level authorization (a blood bank may
-only see its own stock) is best taught on a tenant-owned resource, and Stage 3 matching and allocation need data. Changing a unit's
-status is not needed now: it is the Stage 3 state machine, and a generic PATCH would let anyone bypass rules that do not exist yet.
+The honest answer was: partly. Registering and reading units is needed soon: object-level authorization (a blood bank may
+only see its own stock) is best built on a tenant-owned resource, and matching and allocation need data. Changing a unit's
+status is not needed now: it belongs to the allocation state machine built later, and a generic PATCH would let anyone bypass rules that do not exist yet.
 
 ## Options
 1. Full CRUD now, including PATCH and DELETE of any field.
 2. Register, get and list only.
-3. Defer inventory to Stage 3.
+3. Defer inventory until allocation is built.
 
 ## Decision
 Option 2.
@@ -26,5 +26,5 @@ Option 2.
 ## Consequences
 - Any organization may hold stock (a hospital blood bank is legitimate, and checking `kind = blood_bank` needs a cross-module call that ADR 011 forbids for now). `test_any_organization_may_hold_stock_for_now` records this. Add the check with the first rule that needs it (3.3 or 3.4).
 - The schema has no `version` column yet. Optimistic locking arrives with the allocation work (3.3).
-- Unit status changes, reservation and expiry handling are Stage 3.
+- Unit status changes, reservation and expiry handling come with allocation.
 - Revisit at 3.3 (allocation), 3.9 (expiry job) and 2.4 (ownership checks).

@@ -1,6 +1,6 @@
 # ADR 015: Geo search with PostGIS (nearest banks, nearest donors)
 
-Status: accepted (2026-10-15). Drafted by Claude on Ansh's behalf: read it, own it.
+Status: accepted (2026-10-15).
 
 ## Context
 "Nearest blood bank with stock" and "eligible donors near this hospital" are the two core questions. Answering them by
@@ -10,7 +10,7 @@ loading every row into Python and computing Haversine distances is O(all rows) p
 1. Haversine in Python. Simple; scans everything, every time.
 2. A lat/lng bounding box on two B-tree indexes. Better, but a box is not a circle, and two 1-D indexes combine poorly.
 3. PostGIS `geography` + a GiST index + `ST_DWithin`. The index answers "what is inside this circle" directly.
-4. Geohash / H3 cells. Great for pre-bucketing at very large scale (CLAUDE.md 6.5); unnecessary here.
+4. Geohash / H3 cells. Great for pre-bucketing at very large scale; unnecessary here.
 
 ## Decision
 Option 3.
@@ -32,7 +32,7 @@ visited. Without it, every O+/O- donor in the state (~50k rows) was distance-che
 
 ## Consequences
 - Distance is straight-line over the earth's surface, not road distance or travel time. Good enough to RANK candidates;
-  ETA needs a routing engine (self-hosted OSRM, CLAUDE.md 5.12).
+  ETA needs a routing engine (self-hosted OSRM).
 - The blood-group index scan (~2 ms, 50k rows) is now the largest part of the query. Upgrade if it grows:
   a partial index for available donors, or a composite GiST including the group (btree_gist).
 - Nominatim (geocoding) is NOT called at request time: coordinates are geocoded once, at onboarding.

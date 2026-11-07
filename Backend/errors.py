@@ -13,8 +13,8 @@ from sqlalchemy.exc import TimeoutError as PoolTimeout
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 PROBLEM_JSON = "application/problem+json"
-TYPE_PREFIX = "urn:lifelink:problem:"       # ponytail: a URN, not a docs page. Upgrade path: URLs that resolve to docs.
-# ponytail: any OSError counts as "database unreachable" (asyncpg raises raw socket errors: refused, reset, DNS, connect
+TYPE_PREFIX = "urn:lifelink:problem:"       # Trade-off: a URN, not a docs page. Upgrade path: URLs that resolve to docs.
+# Trade-off: any OSError counts as "database unreachable" (asyncpg raises raw socket errors: refused, reset, DNS, connect
 # timeout); this API does no other network or file I/O on a request path. Narrow it if that ever changes.
 DB_DOWN = (OSError, PoolTimeout)
 log = logging.getLogger("raktdoot.api")
@@ -90,5 +90,5 @@ def unexpected_response(request: Request, exc: Exception) -> JSONResponse:
                                 "The service cannot reach its database right now. Try again shortly.", request,
                                 headers={"Retry-After": "5"})
     # Never send exception text to the client: it leaks internals. The server still logs the traceback.
-    # ponytail: no request id in the body yet; correlation ids arrive in 3.8.
+    # Trade-off: no request id in the body yet; correlation ids arrive in 3.8.
     return problem_response(500, "about:blank", "Internal Server Error", None, request)

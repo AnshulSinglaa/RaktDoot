@@ -1,6 +1,6 @@
 # ADR 016: Allocating blood units to emergency requests
 
-Status: accepted (2026-10-15). Drafted by Claude on Ansh's behalf: read it, own it.
+Status: accepted (2026-10-15).
 
 ## Context
 Two hospitals post emergencies at the same moment, and one O- unit is left. Allocating it to both is the worst bug this
@@ -43,6 +43,6 @@ Option 3, plus a database backstop.
 - ~~RESERVED units never time out~~ Superseded by [ADR 021](021-bank-confirmed-holds.md) (2026-10-19): every reservation
   is now a hold that the bank confirms within 30 minutes and the hospital collects within 6 hours; the worker releases
   expired holds, and a per-hospital cap (20 units) stops hoarding.
-- Distance is straight-line (PostGIS), not road time. Fine for choosing a bank; ETA needs OSRM (Stage 5).
+- Distance is straight-line (PostGIS), not road time. Fine for choosing a bank; ETA needs OSRM.
 - Platelets are rejected: their compatibility policy differs per bank. Red cells and plasma only.
-- The system PROPOSES units; the blood bank's cross-match is the clinical decision (CLAUDE.md 4, medical safety).
+- The system PROPOSES units; the blood bank's cross-match is the clinical decision (medical safety).

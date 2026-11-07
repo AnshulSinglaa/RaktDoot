@@ -38,7 +38,7 @@ async def reserve(
       waiting for the lock and then finding the unit gone. 20 hospitals racing for 5 units: 5 win, nobody blocks.
     Order: nearest bank, then stewardship inside that bank (exact group, same Rh sign, others, O- last:
     domain.stewardship_rank), then first-expired-first-out (FEFO). Bank position stays FIRST: stewardship never
-    sends blood from farther away (cross-bank preference is item 2e, after a medical officer's answer)."""
+    sends blood from farther away (a cross-bank preference needs a medical officer's sign-off first)."""
     if n <= 0 or not bank_ids:
         return []
     bank_order = literal(bank_ids, ARRAY(PG_UUID(as_uuid=True)))       # sent as one uuid[] parameter
@@ -98,7 +98,7 @@ async def banks_with_stock(session: AsyncSession, groups: list[str], component: 
     allocation passes the hold horizon, the same one reserve() uses). The public search passes this as `among=` to
     organizations.nearby, so the stock filter runs BEFORE its LIMIT 20 (R1, 2c): filtering the 20 nearest afterwards
     hid every farther bank with rare blood once 20 nearer banks existed.
-    ponytail: an id list per search; fine for a state (~120 banks), upgrade = a per-bank stock summary table if banks
+    Trade-off: an id list per search; fine for a state (~120 banks), upgrade = a per-bank stock summary table if banks
     reach thousands."""
     rows = await session.scalars(
         select(BloodUnit.blood_bank_id).distinct()
@@ -168,7 +168,7 @@ async def stock_take(session: AsyncSession, bank_id: UUID, counts: dict[tuple[st
     Locks the bank's usable units FOR UPDATE: reserve() uses SKIP LOCKED, so a hold arriving mid-count skips these
     rows instead of taking a unit whose fate the count is deciding; a hold that locked a unit first makes this wait,
     and the re-checked row (now RESERVED) drops out of the count. RESERVED and ISSUED units are never selected.
-    ponytail: FEFO guess at which bags left; exact once bags carry numbers, item 9."""
+    Trade-off: FEFO guess at which bags left; exact once bags carry numbers."""
     rows = (await session.execute(
         select(BloodUnit.id, BloodUnit.blood_group, BloodUnit.component)
         .where(BloodUnit.blood_bank_id == bank_id, BloodUnit.status == "AVAILABLE", BloodUnit.expires_at > now)

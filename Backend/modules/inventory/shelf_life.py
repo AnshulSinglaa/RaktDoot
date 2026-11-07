@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-# ponytail: upper bounds for how long a unit may be stored, NOT clinical advice. Blood banks print the real expiry on the
+# Trade-off: upper bounds for how long a unit may be stored, NOT clinical advice. Blood banks print the real expiry on the
 # bag; we only refuse impossible values. Confirm every number against blood-bank / NBTC rules before real use.
 MAX_SHELF_LIFE_DAYS = {"red_cells": 42, "platelets": 7, "plasma": 365}
 

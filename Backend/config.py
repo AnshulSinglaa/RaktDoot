@@ -30,7 +30,7 @@ class Settings(BaseSettings):
     # browser origins allowed to call the API (the Next.js app). Env form: LIFELINK_CORS_ORIGINS='["https://app.example"]'
     cors_origins: list[str] = ["http://localhost:3000"]
 
-    # ---------- Stage 2: identity ----------
+    # ---------- identity ----------
     jwt_secret: str = Field(min_length=32, repr=False)  # required; repr=False keeps it out of logs and tracebacks
     access_token_minutes: int = 15          # how long a stolen access token stays useful (no revocation list yet)
     refresh_token_days: int = 14

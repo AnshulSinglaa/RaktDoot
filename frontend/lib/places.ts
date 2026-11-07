@@ -1,5 +1,5 @@
 // Approximate centres of Madhya Pradesh district headquarters, for "where is the patient?" without a geocoding service.
-// ponytail: a static list (no Nominatim calls: its public instance forbids this use, CLAUDE.md 4 point 5). The API rounds
+// Trade-off: a static list (no Nominatim calls: its public instance forbids this use). The API rounds
 // any location to ~11 km anyway. Upgrade: a pincode -> centroid table, or a self-hosted geocoder, when other states join.
 export const MP_CITIES: Record<string, [number, number]> = {
   Bhopal: [23.26, 77.41], Indore: [22.72, 75.86], Jabalpur: [23.18, 79.99], Gwalior: [26.22, 78.18],

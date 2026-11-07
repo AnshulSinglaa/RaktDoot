@@ -64,7 +64,7 @@ async def register(payload: RegisterRequest, session: Session, users: Users, aud
             user = await users.add({"email": payload.email, "password_hash": password_hash, "role": "donor"})
             await audit.add(now, "user.registered", "user", user.id, actor_id=user.id)
     except EmailTaken:
-        # ponytail: this 409 tells an attacker the email has an account (enumeration). Accepted for now: signup UX.
+        # Trade-off: this 409 tells an attacker the email has an account (enumeration). Accepted for now: signup UX.
         # Upgrade path: always 202 + "check your email", once email verification exists (3.6).
         raise Problem(409, "email-taken", "Email already registered") from None
     return Me.model_validate(user)
@@ -75,7 +75,7 @@ async def login(payload: LoginRequest, request: Request, response: Response, ses
                 tokens: Tokens, audit: Audit, now: Now, settings: Config):
     # B10: lockout counts per (account, IP). Per account alone, anyone who knew a bank's email could keep it locked
     # out with 5 wrong passwords every 15 minutes. Now the attacker's IP is locked, staff on their own network are not.
-    # ponytail: an attacker with many IPs gets max_failed_logins guesses per IP (the per-IP rate limit still applies);
+    # Trade-off: an attacker with many IPs gets max_failed_logins guesses per IP (the per-IP rate limit still applies);
     # upgrade = MFA for staff accounts. Behind a proxy, client.host is the proxy unless uvicorn trusts its
     # X-Forwarded-For (--proxy-headers --forwarded-allow-ips): without that, this is per account again.
     ip = request.client.host if request.client else "unknown"
@@ -115,7 +115,7 @@ async def refresh(request: Request, response: Response, session: Session, users:
             if row.used_at is not None:
                 # REUSE: this token was already rotated. Either the client or a thief holds a stale copy, and we
                 # cannot tell which, so the whole login (family) dies. The real user just logs in again.
-                # ponytail: two tabs refreshing at the same instant also land here. Upgrade path: a few-second grace.
+                # Trade-off: two tabs refreshing at the same instant also land here. Upgrade path: a few-second grace.
                 await tokens.revoke_family(row.family_id, now)
                 await audit.add(now, "auth.refresh_reuse", "user", row.user_id)
             else:
@@ -156,7 +156,7 @@ async def create_staff(payload: StaffCreate, session: Session, users: Users, aud
                        admin: Principal = require("admin")):
     """Staff accounts are created by an admin, never self-service: a hospital login can see donor records.
 
-    ponytail: the role is not matched to the organization's kind (a 'hospital' user in an NGO is accepted). Checking
+    Trade-off: the role is not matched to the organization's kind (a 'hospital' user in an NGO is accepted). Checking
     it needs a call into the organizations module; add it with the facility-verification flow."""
     password_hash = await asyncio.to_thread(hash_password, payload.password)
     try:

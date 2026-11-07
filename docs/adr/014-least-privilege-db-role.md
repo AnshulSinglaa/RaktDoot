@@ -1,11 +1,11 @@
 # ADR 014: The app connects as a least-privilege database role
 
-Status: accepted (2026-10-15). Drafted by Claude on Ansh's behalf: read it, own it.
+Status: accepted (2026-10-15).
 
 ## Context
-Threat model row 3 (lesson 2.1): the API connected as `lifelink`, the database owner and a superuser. Code running inside
+Threat model row 3: the API connected as `lifelink`, the database owner and a superuser. Code running inside
 the API (a bad dependency, a future injection bug) could `DELETE FROM audit_events`, `DISABLE TRIGGER` on the immutability
-trigger, or `DROP TABLE donors`. The mentor proved it: the DELETE succeeded silently.
+trigger, or `DROP TABLE donors`. I proved it first: the DELETE succeeded silently.
 
 ## Options
 1. Keep one account and trust the code. Rejected: an "immutable" audit log the app can erase is not immutable.

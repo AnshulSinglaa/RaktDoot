@@ -3,7 +3,7 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000
 
 export const BLOOD_GROUPS = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"] as const;
 export type BloodGroup = (typeof BLOOD_GROUPS)[number];
-export const RARE: BloodGroup[] = ["B-", "AB+", "AB-"]; // ponytail: display hint only, matches the reference design
+export const RARE: BloodGroup[] = ["B-", "AB+", "AB-"]; // Trade-off: display hint only, matches the reference design
 
 export type Organization = {
   id: string; kind: string; name: string; city: string; phone: string | null;
@@ -40,7 +40,7 @@ async function problemFrom(res: Response): Promise<ApiError> {
 export async function api<T>(path: string, init: RequestInit = {}): Promise<T> {
   const res = await fetch(API_URL + path, {
     ...init,
-    credentials: "include", // sends the refresh-token cookie to /v1/auth (Stage 2)
+    credentials: "include", // sends the refresh-token cookie to /v1/auth
     // Content-Type only with a body: a bodyless POST must not claim to carry JSON.
     headers: { ...(init.body ? { "Content-Type": "application/json" } : {}), ...init.headers },
   });
@@ -57,7 +57,7 @@ export const newIdempotencyKey = (): string => typeof crypto.randomUUID === "fun
 /** URLSearchParams encodes "+" as %2B. A hand-built "?recipient=AB+" would arrive as "AB " and fail. */
 export const qs = (params: Record<string, string>) => "?" + new URLSearchParams(params).toString();
 
-// ---------- Stage 2: auth ----------
+// ---------- auth ----------
 // Access token: in memory only (gone on reload, never in localStorage where any XSS could read it).
 // Refresh token: an HttpOnly cookie the API sets; JavaScript cannot see it, the browser just sends it to /v1/auth.
 let accessToken: string | null = null;
@@ -123,7 +123,7 @@ export function homeFor(role: string): string {
   return role === "donor" ? "/donor" : role === "blood_bank" ? "/bank" : "/hospital";   // hospital and admin
 }
 
-// ---------- emergencies (mirror the API schemas by hand; CLAUDE.md 5A) ----------
+// ---------- emergencies (mirror the API schemas by hand) ----------
 export type Component = "red_cells" | "plasma";
 export type Allocation = { blood_unit_id: string; blood_bank_id: string; blood_group: BloodGroup; allocated_at: string };
 // OVERDUE: confirmed, pickup deadline passed, still held (never auto-released). ISSUED: collected (by the ward or

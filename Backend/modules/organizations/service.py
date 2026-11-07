@@ -33,7 +33,7 @@ async def nearby(
     ownership: str | None = None, among: list[UUID] | None = None, confirmed_since: datetime | None = None,
 ) -> list[Nearby]:
     """Organizations of `kind` within radius_m, nearest first. ST_DWithin uses the GiST index on `location`.
-    `ownership` and `among` (only these ids, e.g. banks with active staff, D88) filter INSIDE the query, before the
+    `ownership` and `among` (only these ids, e.g. banks with active staff) filter INSIDE the query, before the
     LIMIT: filtering the 20 nearest afterwards would answer "no private bank" whenever 20 government banks are nearer
     (ADR 022). The public search also passes `among` = banks with compatible stock and `confirmed_since` = stock
     counted after this moment (R1, 2c), for the same reason.

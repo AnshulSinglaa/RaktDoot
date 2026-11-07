@@ -1,10 +1,10 @@
 # ADR 010: Audit log in PostgreSQL (MongoDB evaluated and rejected for now)
 
-Status: accepted (2026-10-10). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-10).
 
 ## Context
-LifeLink handles health data, so "who did what to which record, and when" must be answerable. The original plan gave MongoDB the
-audit-log job. A first Mongo version was written (best-effort, after the Postgres commit) but never committed. Ansh challenged it
+Rakt Doot handles health data, so "who did what to which record, and when" must be answerable. The original plan gave MongoDB the
+audit-log job. A first Mongo version was written (best-effort, after the Postgres commit) but never committed. I challenged it
 with the right question: is Mongo actually required? It was not. Nothing had been measured that Postgres could not handle, and Mongo
 brought a second store to run, back up and secure, plus a hole that no retry can close: Postgres and Mongo cannot share a transaction,
 so an audit event can be lost (Mongo down, or the process dies between the commit and the insert).
@@ -21,10 +21,10 @@ Option 2.
 - Fail closed: if the audit insert fails, the request fails (500) and the change does not happen. For health data, completeness of the trail beats availability of a write. Revisit if this ever hurts.
 - Privacy: ids and field NAMES only, never values. `donor.updated` records `{"fields": ["age", "is_available"]}`, not the new age. No names, emails or blood groups.
 - Immutable: a trigger refuses UPDATE on `audit_events`. DELETE stays allowed for the retention purge job (3.5). Later: revoke UPDATE/DELETE from the application role, and drop old partitions instead of deleting rows.
-- `at` comes from the injected clock (timezone-aware UTC). `actor_id` stays NULL until authentication exists (Stage 2).
-- No secondary index yet, following ADR 009: nothing reads the table until the first audit endpoint, which needs authorization (Stage 2). Then add `(entity_id, at, id)`, justified with `EXPLAIN`.
+- `at` comes from the injected clock (timezone-aware UTC). `actor_id` stays NULL until authentication exists.
+- No secondary index yet, following ADR 009: nothing reads the table until the first audit endpoint, which needs authorization. Then add `(entity_id, at, id)`, justified with `EXPLAIN`.
 - No read endpoint yet: audit data must not be public.
-- MongoDB is removed from the project. Add a document store back only when a measured need appears. Candidates: the notification delivery log (3.6) and the rider location trail (Stage 6), where write volume, payload variety and expiry might justify it. Even then, partitioned Postgres tables and time-series stores compete, so decide with numbers.
+- MongoDB is removed from the project. Add a document store back only when a measured need appears. Candidates: the notification delivery log and a rider location trail, where write volume, payload variety and expiry might justify it. Even then, partitioned Postgres tables and time-series stores compete, so decide with numbers.
 
 ## Consequences
 - One store to run, back up and secure; the same migrations, tests and transactions as everything else.

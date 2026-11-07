@@ -1,6 +1,6 @@
 # ADR 017: Donor notifications through a transactional outbox
 
-Status: accepted (2026-10-15). Drafted by Claude on Ansh's behalf: read it, own it.
+Status: accepted (2026-10-15).
 
 ## Context
 "Ask the 20 nearest donors" has to reach donors exactly when the request really exists. The naive version is

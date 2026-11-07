@@ -1,5 +1,5 @@
 # Every push and pull request: lint, the full test suite against real PostGIS, a dependency audit,
-# the frontend type-check + production build, and both Docker images. Nothing deploys from here (yet: Stage 4).
+# the frontend type-check + production build, and both Docker images. Nothing deploys from here yet.
 name: ci
 
 on:

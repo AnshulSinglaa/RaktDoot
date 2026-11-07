@@ -70,8 +70,8 @@ def phone_taken() -> Problem:      # a new instance each time: a shared exceptio
     return Problem(409, "phone-taken", "Phone already registered", "Another verified donor uses this number.")
 
 
-# ponytail: an unverified duplicate of a verified number is left in place (never matched, can never be verified with
-# that number). Purging squatted numbers is plan item 3.
+# Trade-off: an unverified duplicate of a verified number is left in place (never matched, can never be verified with
+# that number). Purging squatted numbers is a planned follow-up.
 
 
 # ---------- the app and its routes ----------
@@ -174,7 +174,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         try:
             async with session.begin():                  # claim the key, insert, audit, save the answer: ONE transaction
                 if idempotency_key is not None and not await idem.claim(idempotency_key, request_hash):
-                    saved = await idem.get(idempotency_key)      # ponytail: a purge job could delete it between the two calls
+                    saved = await idem.get(idempotency_key)      # Trade-off: a purge job could delete it between the two calls
                     if saved.request_hash != request_hash:
                         raise Problem(
                             422, "idempotency-key-reuse", "Idempotency key reused",
@@ -275,7 +275,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         staff: Principal = require("blood_bank", "ngo", "admin"),
     ):
         """Staff confirm the donor's number IN PERSON (they called it, or the donor is standing there). Until then the
-        donor is never matched or alerted. ponytail: SMS OTP is out of scope (ADR 020): in-person checks are slower
+        donor is never matched or alerted. Trade-off: SMS OTP is out of scope (ADR 020): in-person checks are slower
         but harder to fake; add OTP when self-signups must become matchable without a visit."""
         async with session.begin():
             try:

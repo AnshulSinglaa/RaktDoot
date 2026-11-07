@@ -30,8 +30,8 @@ OrgRepo = Annotated[OrganizationRepository, Depends(get_org_repo)]
 
 router = APIRouter(prefix="/organizations", tags=["organizations"])
 
-# ponytail: no DELETE (an organization with stock is blocked by the FK, and deactivation belongs with the
-# verification flow in Stage 2) and no Idempotency-Key (no natural unique key, so a client retry duplicates a row;
+# Trade-off: no DELETE (an organization with stock is blocked by the FK, and deactivation belongs with the
+# verification flow) and no Idempotency-Key (no natural unique key, so a client retry duplicates a row;
 # add the key when creation becomes self-service). Both recorded in docs/adr/011-module-layout.md.
 
 

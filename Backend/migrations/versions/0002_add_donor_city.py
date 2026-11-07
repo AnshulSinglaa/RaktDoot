@@ -19,7 +19,7 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    # ponytail: tiny table, so a plain CHECK is fine. At 10M rows: ADD CONSTRAINT ... NOT VALID, then VALIDATE CONSTRAINT.
+    # Trade-off: tiny table, so a plain CHECK is fine. At 10M rows: ADD CONSTRAINT ... NOT VALID, then VALIDATE CONSTRAINT.
     op.execute("ALTER TABLE donors ADD COLUMN city text CHECK (city IS NULL OR length(city) BETWEEN 1 AND 100)")
 
 

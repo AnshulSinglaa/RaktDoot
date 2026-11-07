@@ -330,7 +330,7 @@ def test_release_is_refused_for_a_pending_hold_and_a_closed_request(client, w, c
 
 
 def test_a_bank_that_let_its_hold_expire_is_asked_again_but_a_rejecting_bank_is_not(client, w, clock, test_url):
-    """Replaces test_a_bank_that_let_its_hold_expire_is_not_asked_again (field review F5a): a silent night shift is not
+    """Replaces test_a_bank_that_let_its_hold_expire_is_not_asked_again: a silent night shift is not
     a "no". After a phone call the hospital clicks "check blood banks again" and the same bank is asked again."""
     (unit,) = stock(client, w["near"])
     rid = post(client, w).json()["id"]

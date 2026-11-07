@@ -138,7 +138,7 @@ async def create_emergency(
 @router.get("", response_model=list[EmergencyRead])
 async def list_emergencies(repo: Repo, now: Now, principal: Principal = require("hospital", "admin")):
     rows = await repo.recent(None if principal.role == "admin" else principal.organization_id)
-    # ponytail: one allocations query per request (N+1). Fine at 50 rows; one JOIN when a profile shows it matters.
+    # Trade-off: one allocations query per request (N+1). Fine at 50 rows; one JOIN when a profile shows it matters.
     return [await present(repo, r, now) for r in rows]
 
 

@@ -1,11 +1,11 @@
 # ADR 023: Stock-take: stock leaves the list by count
 
-Date: 2026-10-20. Status: accepted. Item 2c (backend). Migration 0017 (request code, same item). Supersedes the
+Date: 2026-10-20. Status: accepted. Migration 0017 (adds the request code). Supersedes the
 freshness bullet of ADR 021.
 
 ## Context
 A blood bank's stock list on Rakt Doot drifts from its shelf: bags are issued at the counter without the app, broken,
-quarantined or discarded. Field review F2 / decision D68: the list only ever grew (registering a unit), and the only
+quarantined or discarded. A field review found that the list only ever grew (registering a unit), and the only
 way to say "the list is right" was a bare "Stock is accurate" click (`POST /organizations/{id}/stock-confirmed`) that
 changed no unit. A tired technician could click it with 40 bags listed and 25 on the shelf, and families would see
 "stock confirmed 2 minutes ago" next to 15 bags that do not exist. Freshness meant "someone clicked", not "someone
@@ -13,11 +13,11 @@ counted".
 
 ## Options
 1. **Per-unit removal** (discard this bag, issue that bag). Exact, but needs a bag number on every unit to pick the
-   right row (item 9) and is slow: 40 rows to tap at a shift change.
+   right row and is slow: 40 rows to tap at a shift change.
 2. **Count reconciliation (chosen).** The technician enters, per group and component, how many bags are really on the
    shelf (not the ones set aside for Rakt Doot holds). The list follows the count; freshness = the time of the last
    count.
-3. **Import from e-RaktKosh** (E1). The national system is the real ledger, but it has no public API (D80). Later.
+3. **Import from e-RaktKosh**. The national system is the real ledger, but it has no public API. Later.
 
 ## Decision
 - `POST /v1/organizations/{id}/stock-take` `{counts: [{blood_group, component, units >= 0}]}`, `require("blood_bank")`,
@@ -43,12 +43,12 @@ counted".
 - `POST /organizations/{id}/stock-confirmed` is removed (404 now). Registering a unit still never moves
   `stock_confirmed_at`.
 - The public search's "counted in the last 24 hours" chip becomes `confirmed_within_h` (1-168) on
-  `GET /public/nearest-banks`, filtered inside the nearby SQL before the LIMIT 20 (same trap as ADR 022 / D88, R1).
+  `GET /public/nearest-banks`, filtered inside the nearby SQL before the LIMIT 20 (same trap as ADR 022).
 
 ## Consequences
 - **FEFO guess.** The count says how many bags left, not which. Removing the earliest-expiring ones is the best guess
   (banks issue FEFO) but can remove the wrong rows; then a later hold may name a bag whose expiry differs from the
-  shelf's. Marked `ponytail:` in the code; exact once bags carry numbers (item 9). Counts are audited, so a wrong guess
+  shelf's. Marked `Trade-off:` in the code; exact once bags carry numbers. Counts are audited, so a wrong guess
   is traceable.
 - **Removed units read ISSUED**, not DISCARDED: they left the shelf, and the commonest reason is a counter issue
   outside the app. If the bank later needs "discarded" vs "issued", that is per-unit removal (option 1).

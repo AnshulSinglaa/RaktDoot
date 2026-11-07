@@ -14,7 +14,7 @@ def test_registering_a_donor_writes_one_audit_event_without_personal_data(client
     donor = client.post("/v1/donors", json=make_donor(name="Asha Verma", email="asha.verma@example.com")).json()
     (row,) = audit_rows(test_url, donor["id"])
     assert row["event"] == "donor.registered" and row["entity"] == "donor"
-    assert row["actor_id"] is not None and json.loads(row["details"]) == {}      # Stage 2: the admin who did it
+    assert row["actor_id"] is not None and json.loads(row["details"]) == {}      # the admin who did it
     assert "Asha" not in str(dict(row)) and "asha.verma" not in str(dict(row))
 
 

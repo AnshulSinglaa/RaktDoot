@@ -1,4 +1,4 @@
-# Lint config (CLAUDE.md tooling baseline). Run: python -m ruff check .
+# Lint config. Run: python -m ruff check .
 line-length = 130
 exclude = ["migrations"]
 

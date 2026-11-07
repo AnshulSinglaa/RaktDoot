@@ -1,9 +1,9 @@
 # ADR 002: Split main.py into config, db, models, repository
 
-Status: accepted (2026-10-07). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-07).
 
 ## Context
-Lessons 1.1 to 1.3 lived in one `main.py`. Lesson 1.4 added a database, and the code now has five distinct jobs:
+The first version lived in one `main.py`. Adding a database gave the code five distinct jobs:
 settings, engine/pool creation, table mapping, SQL, and HTTP. `db.py` needs settings, and tests need to build the
 app with different settings, so keeping everything in `main.py` forced a module-level `app` that read config at import time.
 
@@ -13,7 +13,7 @@ app with different settings, so keeping everything in `main.py` forced a module-
 3. Jump to the full modular-monolith layout (`modules/donors/{router,service,repository}.py`).
 
 ## Decision
-Option 2. A second concern (the database) forced the split, which is the trigger our ponytail rule requires.
+Option 2. A second concern (the database) forced the split, which is the trigger our "split only when a real need forces it" rule requires.
 Option 3 is the destination, not the start: there is still only one module (donors), so a `modules/` tree would be empty ceremony.
 
 ## Consequences

@@ -18,7 +18,7 @@ def decode_cursor(cursor: str) -> tuple[datetime, UUID]:
         if when.tzinfo is None:
             raise ValueError("naive timestamp")
         return when, UUID(row_id)
-    except Exception:       # ponytail: any malformed cursor is the client's fault, never a 500
+    except Exception:       # Trade-off: any malformed cursor is the client's fault, never a 500
         raise Problem(
             422, "invalid-cursor", "Invalid cursor",
             "The cursor is malformed. Start again from the first page.",

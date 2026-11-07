@@ -88,7 +88,7 @@ What fails here, and what happens:
 - **Postgres goes down (restart, failover):** every DB-touching request gets 503 `database-unavailable` with
   `Retry-After: 5` and the CORS headers (the handlers are registered by exception class, so they run inside the CORS
   middleware). The desks show "Rakt Doot is briefly unavailable" + Try again; sessions survive (a 5xx is never read as
-  "logged out"); the SSE stream's LISTEN connection reconnects by itself when Postgres is back (D7 of 2026-10-19, D84).
+  "logged out"); the SSE stream's LISTEN connection reconnects by itself when Postgres is back.
 
 ## 2026-10-19: bank-confirmed holds and their expiry (ADR 021)
 
@@ -142,7 +142,7 @@ What fails here, and what happens:
   Mitigation: the hospital sees the bank's phone and deadline (call them), and reliable banks can auto-confirm.
 
 
-## 2026-10-11: end of Stage 1, the whole system as it stands
+## 2026-10-11: first working version, the whole system as it stands
 
 One FastAPI app, one PostgreSQL. No MongoDB (ADR 010), no Redis, no queue: nothing measured needs them yet.
 
@@ -181,9 +181,9 @@ What fails here:
 - Postgres is down: requests fail with a 503 or 500 and nothing changes, so there is no half-written state and no audit gap.
 - A module reaches into another module's code: `test_architecture.py` fails the build. The boundary is a test, not a hope.
 
-Deliberately not built yet: authentication and authorization (Stage 2), unit status changes and allocation (Stage 3), background jobs, caching, any second datastore.
+Deliberately not built yet: authentication and authorization, unit status changes and allocation, background jobs, caching, any second datastore.
 
-## 2026-10-10 (later): the audit trail lives in the same transaction (lesson 1.9, revised: no MongoDB)
+## 2026-10-10 (later): the audit trail lives in the same transaction (revised: no MongoDB)
 
 A MongoDB audit log was designed first and dropped before it was ever committed (ADR 010): a second store means no shared
 transaction and therefore lost events. Postgres is the only store.
@@ -194,7 +194,7 @@ transaction and therefore lost events. Postgres is the only store.
         | HTTP+JSON   POST /v1/donors   PATCH /v1/donors/{id}
         v
 +----------------------------------------------------+
-| lifelink API  (FastAPI, uvicorn :8000)             |
+| Rakt Doot API (FastAPI, uvicorn :8000)             |
 | route -> repositories (SQL only)                   |
 +----------------------------------------------------+
         |
@@ -221,7 +221,7 @@ What fails here:
 - Postgres is down: the request fails and nothing changes, so there is no audit gap.
 - The audit insert itself fails: the whole request rolls back and returns 500 (fail closed). For health data, a complete trail beats availability of a write. The trade-off is recorded in ADR 010.
 
-## 2026-10-10: schema changes reach the databases (lesson 1.5)
+## 2026-10-10: schema changes reach the databases
 
 ```
   PowerShell                              pytest
@@ -256,7 +256,7 @@ One migration travelling through it:
 
 What fails here:
 - Wrong database targeted: a bad `.env` points the migration at the wrong DB. Protection: the URL in `alembic.ini` is blank, and the test path presets its own URL behind the `_test` assert.
-- Migration waits on a lock: a long query holds a lock on `donors`, the `ALTER` queues behind it, and every request behind the `ALTER` queues too. Nothing crashes, the site freezes. Protection (Stage 4): set `lock_timeout` so the migration gives up fast.
+- Migration waits on a lock: a long query holds a lock on `donors`, the `ALTER` queues behind it, and every request behind the `ALTER` queues too. Nothing crashes, the site freezes. Protection: set `lock_timeout` so the migration gives up fast.
 
 ## 2026-10-15: Interview build complete (Stages 1-2 + emergency core, geo, outbox, live status)
 

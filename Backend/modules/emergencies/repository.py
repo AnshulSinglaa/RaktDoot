@@ -28,7 +28,7 @@ class EmergencyRepository:
         return await self.session.scalar(stmt)
 
     async def recent(self, hospital_id: UUID | None, limit: int = 50) -> list[EmergencyRequest]:
-        # ponytail: newest 50, no cursor. A hospital has a handful of live requests; add keyset paging with history views.
+        # Trade-off: newest 50, no cursor. A hospital has a handful of live requests; add keyset paging with history views.
         stmt = select(EmergencyRequest).order_by(EmergencyRequest.created_at.desc(), EmergencyRequest.id).limit(limit)
         if hospital_id is not None:
             stmt = stmt.where(EmergencyRequest.hospital_id == hospital_id)
@@ -51,7 +51,7 @@ class EmergencyRepository:
     # ---------- holds (ADR 021). Every UPDATE is conditional, and callers hold the request row lock ----------
     async def lock_hospital_cap(self, hospital_id: UUID) -> None:
         """Serialise allocations of ONE hospital, so two parallel requests cannot both see "room for 5" under the cap.
-        ponytail: hashtext collisions between hospitals only make them queue briefly; per-hospital caps (a nullable
+        Trade-off: hashtext collisions between hospitals only make them queue briefly; per-hospital caps (a nullable
         column) are deferred until a hospital needs a different number."""
         await self.session.execute(text("SELECT pg_advisory_xact_lock(hashtext('hospital-cap:' || :h))"),
                                    {"h": str(hospital_id)})
@@ -68,7 +68,7 @@ class EmergencyRepository:
     async def excluded_banks(self, request_id: UUID) -> set[UUID]:
         """Banks never asked again for this request: only those that explicitly said no. A bank that let its hold expire
         (night shift, nobody at the screen) is asked again when the hospital clicks "check blood banks again" after a
-        call (field review F5a); one that released an OVERDUE hold may be asked again too."""
+        call; one that released an OVERDUE hold may be asked again too."""
         rows = await self.session.execute(text(
             "SELECT DISTINCT blood_bank_id FROM allocations WHERE request_id = :r AND release_reason = 'rejected'"),
             {"r": request_id})

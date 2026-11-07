@@ -2,7 +2,7 @@
 
 Status: accepted (2026-10-19), REVISED the same day after code review (see "Revision: confirmed holds are never
 auto-released" below), and again on 2026-10-20 after the field review ("Revision 2: hold outcomes", which REPLACES the
-fulfil, cancel and excluded-banks rules of the Decision section). Drafted by Claude on Ansh's behalf: read it, own it. Supersedes the "RESERVED units never time
+fulfil, cancel and excluded-banks rules of the Decision section). Supersedes the "RESERVED units never time
 out" consequence of ADR 016 for PENDING holds only.
 
 ## Context
@@ -38,7 +38,7 @@ shelf. Three problems remained:
   the hold is released as `rejected` and that bank is never asked again for that request.
 - **A lost hold** (rejected, expired or released by the bank) puts units back with a guarded `RESERVED -> AVAILABLE`, and the request is
   recomputed (`ALLOCATED -> OPEN` added to the state machine). No automatic re-allocation: the hospital clicks "check
-  blood banks again" (ponytail comment names the upgrade).
+  blood banks again" (a Trade-off comment names the upgrade).
 - **Fulfil** only when every live hold is CONFIRMED (OVERDUE counts: it is confirmed), else `409 holds-unconfirmed`.
   **Cancel** releases PENDING, CONFIRMED and OVERDUE holds as `cancelled`.
 - **Banks that rejected OR let a hold expire** are never asked again for that request (`excluded_banks`). Asking a bank
@@ -144,7 +144,7 @@ shelf. Three problems remained:
   row); backing off" and kept running; the API logged "LISTEN reconnect failed ... starting up" then stopped failing;
   afterwards `pg_stat_activity` showed 4 LISTEN connections from `lifelink_app` (one per uvicorn worker).
 
-## Revision 2 (2026-10-20): hold outcomes (field review F1, F5a, F6a; migration 0015)
+## Revision 2 (2026-10-20): hold outcomes (after a field review; migration 0015)
 - **Context:** the system only knew what the screen was told, and the screen could only say "received" (all or nothing,
   every bank confirmed) or "cancel" (everything back). Real life: the nurse collects from Bank A while Bank B never
   answered; the bank issues at the counter without opening the app; a request needing 3 closes with 2. "Cancel" then put
@@ -152,7 +152,7 @@ shelf. Three problems remained:
   issued by hand. Same phantom-stock promise this ADR exists to prevent. Separately, a bank that let a hold expire at
   night was excluded for good, and inside one bank O- was given to a B+ patient whenever it expired first.
 - **Options:** (a) keep all-or-nothing close and add warnings (still lies when the nurse picks the wrong button);
-  (b) per-unit "issued" with bag numbers (correct, but banks do not carry bag numbers in our data yet: item 9);
+  (b) per-unit "issued" with bag numbers (correct, but banks do not carry bag numbers in our data yet);
   (c) a COLLECTED state per (request, bank), set by either side, that nothing can release, and a close that must say
   which banks were collected from (chosen).
 - **Decision:**
@@ -180,8 +180,8 @@ shelf. Three problems remained:
   - Cap: collected units do not count (they are in a patient, not hoarded). `EmergencyRead.units_collected` added.
 - **Why not cross-bank preference yet:** sending a B+ patient's driver 20 km for B+ instead of 2 km for O+ is a clinical
   trade-off (time vs stewardship). Inside one bank there is no trade-off: same distance, already-compatible units. The
-  cross-bank rule waits for a medical officer's answer (item 2e, escalations E5/E9).
-- **Consequences:** breaking API change to fulfil/cancel (frontend 2b-FE ships with it; k6 and loadtest.py updated).
+  cross-bank rule waits for a medical officer's answer.
+- **Consequences:** breaking API change to fulfil/cancel (the frontend ships with it; k6 and loadtest.py updated).
   Collected is irreversible by design: a wrong "collected" click removes real stock until the bank registers the bag
   again. Accepted: phantom stock sends a family to an empty shelf; missing stock costs one phone call. Downgrade
   of 0015 is lossy (collected on an open request reads CONFIRMED again) but never resurrects blood: units stay ISSUED.

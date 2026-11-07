@@ -32,12 +32,12 @@ using it would be wrong (donors are private people).
 Not imported, on purpose: email, website, fax and personnel tags (minimisation). Stock next to these real names is
 synthetic and flagged `stock_is_demo` by the API.
 
-## Planned (after item 2b)
+## Planned
 | Data | Source | Licence | Use |
 |---|---|---|---|
 | UCI "Blood Transfusion Service Center" (748 donors, recency/frequency/time, did they donate again) | [UCI ML Repository #176](https://archive.ics.uci.edu/dataset/176/blood+transfusion+service+center), Taiwan, 2008 | CC BY 4.0 | Honest ML baseline for "will this donor respond?". It is Taiwanese data, so it shows the pipeline (features, training, evaluation, shadow mode), not Indian behaviour. |
 | District population (Census 2011) | Census of India / data.gov.in | Government Open Data Licence - India | Blood-desert analysis: population per district vs distance to the nearest real blood bank |
-| Dengue cases by state and year | [NCVBDC table](https://ncvbdc.mohfw.gov.in/Doc/Dengue-Cases-deaths-2021-2026-till-April.pdf) | Government publication | Context for platelet surges (item 6b) |
+| Dengue cases by state and year | [NCVBDC table](https://ncvbdc.mohfw.gov.in/Doc/Dengue-Cases-deaths-2021-2026-till-April.pdf) | Government publication | Context for platelet surges |
 | Daily donations by blood group (Malaysia) | [data.gov.my](https://data.moh.gov.my/data-catalogue/blood_donations), CSV | CC BY 4.0 | Optional: a real daily time series for demand/supply forecasting demos (clearly labelled as Malaysian) |
 
 ## Looked at and not used

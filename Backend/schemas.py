@@ -56,7 +56,7 @@ class DonorCreate(_ApproxLocation):
     blood_group: BloodGroup
     sex: Literal["male", "female", "other"]          # drives the donation interval (domain.donation_interval_days)
     phone: Phone | None = None                       # verified in person: by staff at a camp, or at the first donation
-    # Self-declared at signup: accepted risk. The camp's medical screening is the real check (CLAUDE.md 4, point 6).
+    # Self-declared at signup: accepted risk. The camp's medical screening is the real check.
     last_donated_at: AwareDatetime | None = None
     city: Name | None = None
     # DPDP Act: processing health data needs explicit consent. Must be literally true; false or missing is a 422.

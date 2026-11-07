@@ -14,7 +14,7 @@ const GROUPS = ["O+", "B+", "A+", "AB+", "O-", "B-", "A-", "AB-"];
 
 export const options = {
   scenarios: { hospitals: { executor: "constant-vus", vus: Number(__ENV.VUS || 40), duration: __ENV.DURATION || "30s" } },
-  // The SLO, decided BEFORE measuring (CLAUDE.md 5.1). The run fails if it is broken.
+  // The SLO, decided BEFORE measuring. The run fails if it is broken.
   thresholds: {
     http_req_failed: ["rate<0.01"],
     "http_req_duration{name:create}": ["p(95)<300"],

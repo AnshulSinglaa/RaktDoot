@@ -1,6 +1,6 @@
 "use client";
 // The guard every staff page uses: who is logged in, and are they the right kind of user for this screen?
-// UX only. The API enforces every permission on every call (CLAUDE.md 5A: the frontend is not a security boundary).
+// UX only. The API enforces every permission on every call (the frontend is not a security boundary).
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ApiError, authed, homeFor, type Me } from "@/lib/api";

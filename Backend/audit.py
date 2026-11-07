@@ -19,7 +19,7 @@ class AuditRepository:
 
     async def add(
         self, at: datetime, event: str, entity: str, entity_id: UUID, details: dict | None = None,
-        actor_id: UUID | None = None,           # who did it (Stage 2). None = the system, or an anonymous request
+        actor_id: UUID | None = None,           # who did it. None = the system, or an anonymous request
     ) -> None:
         await self.session.execute(
             text(

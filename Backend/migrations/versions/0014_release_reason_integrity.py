@@ -8,7 +8,7 @@ ADR 021 (revised 2026-10-19): the worker auto-expires only PENDING holds. A CONF
 OVERDUE and stays held until the hospital fulfils/cancels or the bank releases it ('released', a new reason).
 - CHECK (released_at IS NULL) = (release_reason IS NULL): a released row always says why, a live one never does.
   0013 backfilled every released row with 'cancelled', so existing rows comply; ADD CONSTRAINT validates them anyway
-  and fails loudly if one does not. ponytail: validated under an ACCESS EXCLUSIVE lock, fine at this size; on a big
+  and fails loudly if one does not. Trade-off: validated under an ACCESS EXCLUSIVE lock, fine at this size; on a big
   table use ADD ... NOT VALID, then VALIDATE CONSTRAINT (weaker lock).
 - The expiry index matches the only query that uses it: live AND unconfirmed holds by deadline.
 

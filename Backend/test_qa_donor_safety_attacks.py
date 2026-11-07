@@ -1,4 +1,4 @@
-"""QA attacks on donor safety (plan item 1, ADR 020). Written by the QA gatekeeper.
+"""QA attacks on donor safety (ADR 020).
 
 Both findings are FIXED (ADR 020, migration 0012): the xfail markers are gone and these tests now guard the fixes.
 verify-phone now requires the presented number (ruling 1), so the attack sends the OLD number."""

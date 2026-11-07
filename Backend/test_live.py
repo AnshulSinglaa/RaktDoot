@@ -26,7 +26,7 @@ HAMIDIA = {"latitude": 23.2599, "longitude": 77.3920}
 def setup_request(client, test_url, stock=1):
     hospital = client.post("/v1/organizations", json=make_organization(kind="hospital", **AIIMS)).json()["id"]
     bank = client.post("/v1/organizations", json=make_organization(kind="blood_bank", **HAMIDIA)).json()["id"]
-    make_user(test_url, "blood_bank", bank)                    # onboarded bank: only those are held (D88)
+    make_user(test_url, "blood_bank", bank)                    # onboarded bank: only those are held
     for _ in range(stock):
         client.post("/v1/blood-units", json=make_blood_unit(bank))
     staff = as_role(client, test_url, "hospital", hospital)

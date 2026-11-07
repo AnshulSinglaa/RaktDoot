@@ -1,5 +1,5 @@
 # ruff: noqa: F811  (the imported `w` and `clock` fixtures are requested by name as parameters)
-"""QA attacks on hold outcomes (ADR 021 revision 2, item 2b): the races the engineer's suite does not cover, the second
+"""QA attacks on hold outcomes (ADR 021 revision 2): the races the engineer's suite does not cover, the second
 half of the CHECK, cross-tenant ids on the new endpoints, and closed-request edges."""
 import asyncio
 import json

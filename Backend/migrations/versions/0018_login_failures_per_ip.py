@@ -10,7 +10,7 @@ attacker's IP is locked, the real staff on their own network still log in.
 users.failed_logins and users.locked_until are no longer read or written. They stay for now (expand step, so a
 rollback to the previous app version still works) and are dropped in a later contract migration.
 ip: the client address as the API sees it, needed to tell attackers from staff. Personal data (DPDP): a row is
-deleted on the next successful login from that IP. ponytail: no purge job for rows that never see a success; add one
+deleted on the next successful login from that IP. Trade-off: no purge job for rows that never see a success; add one
 (DELETE WHERE last_failed_at < now() - interval '30 days') when the table is measurably large.
 Downgrade drops the table (lossy on purpose: lockouts in progress are forgotten).
 """

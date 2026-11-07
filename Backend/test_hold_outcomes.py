@@ -1,5 +1,5 @@
 # ruff: noqa: F811  (the imported `w` and `clock` fixtures are requested by name as parameters)
-"""Hold outcomes (ADR 021 revision 2, field review F1): blood that physically left a bank never comes back as AVAILABLE,
+"""Hold outcomes (ADR 021 revision 2): blood that physically left a bank never comes back as AVAILABLE,
 whichever path the hospital or the bank takes. Collected = live + confirmed + units ISSUED; nothing releases it."""
 import asyncio
 import json

@@ -123,7 +123,7 @@ async def _seed(conn: asyncpg.Connection, rng: random.Random, now: datetime, don
                                      columns=["id", "blood_bank_id", "blood_group", "component", "collected_at", "expires_at"])
 
     # ---------- donors: walk-in records (no login), approximate locations ----------
-    # ponytail: COPY writes straight to the table and bypasses the API on purpose (2,000 rows in well under a second).
+    # Trade-off: COPY writes straight to the table and bypasses the API on purpose (2,000 rows in well under a second).
     # The DB CHECKs still apply. Phones are +910xxxxxxxxx: the CHECK accepts them, the API never does, and no Indian
     # number has a 0 right after +91, so a seeded number can never collide with a real signup or ring anyone (ADR 020).
     # sorted: a set's iteration order changes per process (string hashing is randomised), and rng.choice over it

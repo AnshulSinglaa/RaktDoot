@@ -1,11 +1,11 @@
 # ADR 024: Leaflet for the find-blood map
 
-Date: 2026-10-20. Status: accepted. Item 2r (frontend). The first runtime dependency added to the frontend.
+Date: 2026-10-20. Status: accepted. The first runtime dependency added to the frontend.
 
 ## Context
 `/find` lists the nearest blood banks with a distance in km. A distance does not show what a family needs to judge a
 trip: which side of the river or highway a bank is on, whether three banks sit together in one hospital district, how
-far "48 km" really is from the patient. Item 2r-BE gave every `NearbyBank` its real coordinates (OpenStreetMap, ADR
+far "48 km" really is from the patient. The backend change gave every `NearbyBank` its real coordinates (OpenStreetMap, ADR
 022), so a map is now possible. The users are scared people on cheap phones and slow networks; the map must never be
 the only way to a result, and it must not cost the other pages anything.
 
@@ -50,5 +50,5 @@ Option 3: `leaflet` pinned to exactly `1.9.4`, `@types/leaflet` `1.9.20` (dev). 
   list."; no uncaught error (verified with the tile host blocked). The JS chunk failing to load leaves the list intact.
 - Privacy: tile requests reveal the viewed area to the tile host (coarse: the map shows the rounded search area and the
   banks around it, never the user's precise position).
-- Not done: marker clustering (20 results at most), routes or ETA (Stage 5, OSRM), keyboard-operable markers (the list
+- Not done: marker clustering (20 results at most), routes or ETA (OSRM), keyboard-operable markers (the list
   mirrors them).

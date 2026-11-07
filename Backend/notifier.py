@@ -15,7 +15,7 @@ class Notifier(Protocol):
 class LogNotifier:
     """Development adapter: writes a log line instead of an SMS. Ids only: never a name, a phone number or a group.
 
-    ponytail: one adapter. A real channel (SMS via an Indian DLT-registered provider, FCM push, email) is a class with
+    Trade-off: one adapter. A real channel (SMS via an Indian DLT-registered provider, FCM push, email) is a class with
     the same send(); pick it from settings when the first one is integrated."""
 
     async def send(self, donor_id: UUID, request_id: UUID) -> None:

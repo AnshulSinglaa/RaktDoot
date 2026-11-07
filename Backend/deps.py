@@ -40,12 +40,12 @@ Audit = Annotated[AuditRepository, Depends(get_audit_repo)]
 Now = Annotated[datetime, Depends(get_now)]
 
 
-# ---------- Stage 2: who is calling ----------
+# ---------- who is calling ----------
 @dataclass(frozen=True)
 class Principal:
     """The caller, as the access token says. No database read per request: that is the point of a signed token.
 
-    ponytail: a deactivated user keeps access until the token expires (access_token_minutes). Upgrade path:
+    Trade-off: a deactivated user keeps access until the token expires (access_token_minutes). Upgrade path:
     a Redis deny-list of user ids checked here, when an incident shows 15 minutes is too long."""
     id: UUID
     role: str
@@ -88,8 +88,8 @@ def require(*roles: str):
 def auth_rate_limit(request: Request, settings: Config) -> None:
     """At most N login/register calls per client IP per minute: slows password guessing and signup spam.
 
-    ponytail: in-process memory, fixed 60 s window. Two app instances = two counters, and a restart forgets.
-    Upgrade path: Redis INCR + EXPIRE at Stage 5 (2+ instances), or the edge limiter (5.8)."""
+    Trade-off: in-process memory, fixed 60 s window. Two app instances = two counters, and a restart forgets.
+    Upgrade path: Redis INCR + EXPIRE once there are 2+ instances, or an edge rate limiter."""
     _limit(request, "auth", settings.auth_rate_limit_per_minute)
 
 
@@ -98,7 +98,7 @@ def public_rate_limit(request: Request, settings: Config) -> None:
     `public_rate_limit_per_minute`. Generous for a hospital ward behind one NAT IP, useless for scraping the map, and
     no 2x burst at a window rollover (a fixed window allows `limit` at 0:59 and `limit` again at 1:00).
 
-    ponytail: in-process memory, per worker: 4 uvicorn workers = 4 buckets per IP, a restart refills them.
+    Trade-off: in-process memory, per worker: 4 uvicorn workers = 4 buckets per IP, a restart refills them.
     Upgrade path: one Redis bucket per IP (a Lua script or GCRA) when there are several instances, or the edge (5.8)."""
     rate = settings.public_rate_limit_per_minute / 60                   # tokens per second
     burst = settings.public_rate_burst

@@ -86,7 +86,7 @@ def test_list_filters(client):
 def test_units_cannot_be_patched_or_deleted_yet(client):
     unit = client.post("/v1/blood-units", json=make_blood_unit(bank(client))).json()
     assert client.patch(f"/v1/blood-units/{unit['id']}", json={"status": "ISSUED"}).status_code == 405
-    assert client.delete(f"/v1/blood-units/{unit['id']}").status_code == 405     # status moves through Stage 3 rules
+    assert client.delete(f"/v1/blood-units/{unit['id']}").status_code == 405     # status moves only through the hold workflow
 
 
 def test_any_organization_may_hold_stock_for_now(client):

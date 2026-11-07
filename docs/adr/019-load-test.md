@@ -1,9 +1,9 @@
 # ADR 019: Load test, SLO and API worker count
 
-Status: accepted (2026-10-15). Drafted by Claude on Ansh's behalf: read it, own it.
+Status: accepted (2026-10-15).
 
 ## Context
-"It's fast" is not a claim, a number is. Before tuning anything we set an SLO (CLAUDE.md 5.1) and measured the real
+"It's fast" is not a claim, a number is. Before tuning anything we set an SLO and measured the real
 workload: one emergency lifecycle = create (geo search + `FOR UPDATE SKIP LOCKED` allocation) → 3 reads → donor-matches
 (PostGIS) → cancel. Self-cleaning: every reserved unit is released.
 

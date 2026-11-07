@@ -30,9 +30,9 @@ UnitRepo = Annotated[BloodUnitRepository, Depends(get_unit_repo)]
 
 router = APIRouter(prefix="/blood-units", tags=["inventory"])
 
-# ponytail: no PATCH or DELETE. A unit's status moves AVAILABLE -> RESERVED -> ISSUED / EXPIRED through the allocation
-# rules of Stage 3 (locks, expiry job); a generic PATCH would let anyone bypass rules that do not exist yet.
-# ponytail: any organization may hold stock. Restricting it to kind = blood_bank needs a cross-module call, which we add
+# Trade-off: no PATCH or DELETE. A unit's status moves AVAILABLE -> RESERVED -> ISSUED / EXPIRED through the allocation
+# rules of the hold workflow (locks, expiry job); a generic PATCH would let anyone bypass rules that do not exist yet.
+# Trade-off: any organization may hold stock. Restricting it to kind = blood_bank needs a cross-module call, which we add
 # with the first rule that needs it (3.3 / 3.4). Both recorded in docs/adr/012-inventory-minimal-scope.md.
 
 

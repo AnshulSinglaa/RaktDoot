@@ -1,6 +1,6 @@
 # ADR 018: Live request status with SSE and Postgres LISTEN/NOTIFY
 
-Status: accepted (2026-10-15). Drafted by Claude on Ansh's behalf: read it, own it.
+Status: accepted (2026-10-15).
 
 ## Context
 A hospital watching an emergency must see units reserved, donors notified and donors answering as it happens, not on refresh.
@@ -39,7 +39,7 @@ SSE (3) + Postgres LISTEN/NOTIFY (b).
 
 ## Consequences
 - NOTIFY payloads are capped at 8000 bytes and share one Postgres-wide queue. Fine for tiny id-only payloads at this scale.
-  Upgrade at Stage 5 (thousands of viewers, live GPS): Redis pub/sub or a dedicated gateway tier (CLAUDE.md 6.15).
+  Upgrade at scale (thousands of viewers, live GPS): Redis pub/sub or a dedicated gateway tier.
 - ~~If the LISTEN connection drops, live updates stop until the API restarts.~~ Fixed 2026-10-19 (the frontend agent saw
   exactly this after a Postgres restart): `EventHub` re-opens the LISTEN connection with backoff (1 s doubling to 30 s),
   woken by asyncpg's termination listener, then nudges every subscriber once. NOTIFY is not stored, so events committed

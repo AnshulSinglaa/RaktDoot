@@ -19,7 +19,7 @@ depends_on: Union[str, Sequence[str], None] = None
 
 
 def upgrade() -> None:
-    # ponytail: no secondary index yet. Nothing reads this table until the first audit endpoint (Stage 2, needs auth);
+    # Trade-off: no secondary index yet. Nothing reads this table until the first audit endpoint (needs auth);
     # then add (entity_id, at, id), justified by EXPLAIN. Retention is a purge job (3.5): DELETE rows older than policy.
     op.execute("""
         CREATE TABLE audit_events (
@@ -31,7 +31,7 @@ def upgrade() -> None:
             actor_id   uuid,
             details    jsonb       NOT NULL DEFAULT '{}'
         )""")
-    # actor_id stays NULL until authentication exists (Stage 2).
+    # actor_id stays NULL until authentication exists.
     # A recorded fact must not change: UPDATE is refused by the database itself. (DELETE stays allowed for the retention purge.)
     op.execute("""
         CREATE FUNCTION audit_events_no_update() RETURNS trigger LANGUAGE plpgsql AS $$

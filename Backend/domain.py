@@ -76,7 +76,7 @@ def compatible_plasma_donor_groups(recipient: BloodGroup) -> list[BloodGroup]:
 
 
 def compatible_groups(recipient: BloodGroup, component: str) -> list[BloodGroup]:
-    """The system PROPOSES; the blood bank's cross-match decides (CLAUDE.md 4, medical safety)."""
+    """The system PROPOSES; the blood bank's cross-match decides (medical safety)."""
     if component == "red_cells":
         return compatible_donor_groups(recipient)
     if component == "plasma":
@@ -89,7 +89,7 @@ def stewardship_rank(patient: BloodGroup, unit: BloodGroup, component: str) -> i
     them. Red cells: the exact group, then the same Rh sign, then other compatible groups, O- last for anyone not O-
     (O- is the only red cell an O- patient, or a patient of unknown group, can get). Plasma: exact first, then the rest.
     Only reorders units INSIDE one bank among already-compatible ones, so it never makes blood farther away (ADR 021
-    revision 2). ponytail: order pending a medical officer's review (supervisor E5); cross-bank preference is item 2e."""
+    revision 2). Trade-off: this order awaits a medical officer's review; a cross-bank preference needs the same sign-off."""
     if unit == patient:
         return 0
     if component != "red_cells":

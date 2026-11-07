@@ -1,6 +1,6 @@
 # ADR 005: REST conventions (resources, /v1, keyset pagination)
 
-Status: accepted (2026-10-10). DRAFT written by the mentor on Ansh's behalf: read it, edit it, own it.
+Status: accepted (2026-10-10).
 
 ## Context
 `GET /donors` returned every donor, with no version in the URL. An unbounded list is a slow query and a denial-of-service

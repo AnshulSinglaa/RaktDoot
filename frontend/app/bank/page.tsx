@@ -8,7 +8,7 @@ import { StaffBar, useOrg } from "@/lib/staff";
 import { Badge, Icon, PhoneLine, Skeleton, URGENCY_LOOK, ago, focusOnMount, left, useNow, useReturnFocus } from "@/lib/ui";
 
 const today = () => new Date().toLocaleDateString("en-CA");       // YYYY-MM-DD in the user's own time zone
-const HOLDS_POLL_MS = 20000;       // ponytail: polling; banks have no live stream yet. Upgrade: SSE like the hospital page.
+const HOLDS_POLL_MS = 20000;       // Trade-off: polling; banks have no live stream yet. Upgrade: SSE like the hospital page.
 const COMPONENT_TEXT: Record<string, string> = { red_cells: "red cells", plasma: "plasma", platelets: "platelets" };
 const pairText = (l: StockLine) => `${l.blood_group} ${COMPONENT_TEXT[l.component] ?? l.component}`;
 const REASONS = { not_in_stock: "Not in stock", cannot_supply: "Cannot supply" } as const;
