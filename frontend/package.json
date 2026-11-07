@@ -1,5 +1,5 @@
 {
-  "name": "lifelink-frontend",
+  "name": "raktdoot-frontend",
   "private": true,
   "scripts": {
     "dev": "next dev",

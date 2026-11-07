@@ -46,6 +46,11 @@ test("home, then a family finds compatible blood in Bhopal", async ({ page }, in
   // Real facilities, synthetic stock: a call button may only ask what the bank really has, never claim the demo stock.
   for (const call of await page.locator('a[href^="tel:"]').all()) await expect(call).toContainText("Call to ask what they really have");
   await noSidewaysScroll(page);
+  // The desktop map loads its tiles from OpenStreetMap: wait for them, or the screenshot shows an empty grey box.
+  if (info.project.name === "desktop" && process.env.SHOTS) {
+    await page.locator(".leaflet-tile-loaded").first().waitFor({ timeout: 20_000 });
+    await page.waitForTimeout(1_500); // let the remaining tiles and markers settle
+  }
   await shot(page, info.project.name === "desktop" ? "find-desktop" : "find-mobile");
 });
 

@@ -104,6 +104,19 @@ Other decisions: [011 modular monolith layout](docs/adr/011-module-layout.md), [
 - **No Kafka, Kubernetes or Redis** until a measurement says Postgres is not enough. The outbox gives reliability;
   `LISTEN/NOTIFY` gives live updates; the login rate limiter is per worker for now, and account lockout is the real control.
 
+## Known limits
+
+- **Numbers come from one laptop** (client, API and database share 12 cores). They show the shape and the headroom,
+  not production capacity.
+- **Create p95 is 306 ms against a 300 ms goal.** The next step is to cache the hospital's location and build the
+  response from memory instead of re-reading it.
+- **A stock count says how many bags left, not which.** The earliest-expiring ones are removed (banks issue first-expired-first-out);
+  it becomes exact once bags carry barcode numbers.
+- **The login rate limiter lives in each API worker's memory,** so 4 workers allow 4× the configured rate. Redis is the
+  fix once there is more than one server.
+- **Not deployed.** It runs anywhere Docker runs; a cloud deployment (managed Postgres, containers, a secrets manager)
+  is the next step.
+
 ## Run it locally
 
 Prerequisites: Docker Desktop (Compose v2), Git. For the demo password file and the tests: Python 3.12.
@@ -123,7 +136,7 @@ docker compose exec api python manage.py import-osm   # real MP hospitals and bl
 cd Backend
 python -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env    # LIFELINK_DATABASE_URL=postgresql://lifelink:<POSTGRES_PASSWORD>@localhost:5434/lifelink
+cp .env.example .env    # LIFELINK_DATABASE_URL=postgresql://lifelink:<POSTGRES_PASSWORD>@127.0.0.1:5434/lifelink
                         # and a 32+ character LIFELINK_JWT_SECRET
 python manage.py seed-demo                            # writes Backend/demo-credentials.txt (gitignored)
 ```
@@ -162,3 +175,8 @@ docs/                 ARCHITECTURE.md, DATA-SOURCES.md, adr/
 infra/postgres/       first-start init (test database)
 docker-compose.yml    the whole stack, ports bound to 127.0.0.1
 ```
+
+The project was first called LifeLink. Internal identifiers keep that name on purpose (the `LIFELINK_` settings
+prefix, the `lifelink` databases, `urn:lifelink:problem:` error types): renaming them would break every `.env`,
+database and API client for no user value.
+
