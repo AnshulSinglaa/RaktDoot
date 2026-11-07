@@ -1,5 +1,7 @@
 [run]
 source = .
+# SQLAlchemy async runs code in greenlets; without this, Python 3.12 (CI) misses most of it and reports ~81%.
+concurrency = greenlet, thread
 omit =
     test_*.py
     conftest.py

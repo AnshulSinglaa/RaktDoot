@@ -1,4 +1,4 @@
-"""Stage 2: identity. Who may log in, how tokens live and die, and who may call what (the role matrix)."""
+"""Identity. Who may log in, how tokens live and die, and who may call what (the role matrix)."""
 import asyncio
 import base64
 import json
@@ -178,6 +178,13 @@ def test_the_app_refuses_to_start_without_a_strong_secret(test_url):
         create_app(Settings(database_url=test_url, jwt_secret="CHANGE_ME"))
     with pytest.raises(ValidationError):
         Settings(database_url=test_url, jwt_secret="s" * 32, environment="production", cookie_secure=False)
+
+
+def test_refresh_cookie_is_secure_by_default():
+    """The test settings turn Secure off (plain-http TestClient); the shipped default must stay on."""
+    from config import Settings
+
+    assert Settings.model_fields["cookie_secure"].default is True
 
 
 # ---------- staff accounts ----------

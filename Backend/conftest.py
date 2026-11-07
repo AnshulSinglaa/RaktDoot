@@ -156,7 +156,9 @@ def app_url(test_url: str) -> str:
 
 @pytest.fixture
 def settings(test_url) -> Settings:
-    return Settings(database_url=app_url(test_url), jwt_secret=TEST_SECRET)
+    # The TestClient talks plain http://testserver, and a client never sends a Secure cookie over http. Say so here,
+    # not in a developer's .env: CI has no .env, and the refresh tests failed there while passing locally.
+    return Settings(database_url=app_url(test_url), jwt_secret=TEST_SECRET, cookie_secure=False)
 
 
 @pytest.fixture
@@ -179,7 +181,7 @@ def app(settings, fresh_db):
 
 @pytest.fixture
 def client(app, test_url):
-    """Logged in as an ADMIN: Stage 1 tests are about the API's behaviour, not about who may call it.
+    """Logged in as an ADMIN: most tests are about the API's behaviour, not about who may call it.
     Who may call what is tested in test_auth.py with `anon` and `as_role`."""
     with TestClient(app) as c:          # "with" runs startup and shutdown
         c.headers.update(as_role(c, test_url, "admin"))
